@@ -75,9 +75,12 @@ sources, optimizes, and fills the real image herself. Only use an image URL she 
 Both are valid — pick to match the style:
 - **Text** (e.g. `Facebook · Instagram`) — lightest (0 images), always renders, never breaks.
   Default for **luxe / minimal / editorial** styles.
-- **Icon images** — referenced as `[icon_facebook]` etc. Suit **vibrant / playful** styles. They
-  are a **reusable hosted set** (generic, not client-specific) the user hosts once and reuses.
-  Must be **PNG/GIF, never SVG** (Outlook won't render SVG).
+- **Icon images** — Suit **vibrant / playful** styles. Must be **PNG/GIF, never SVG** (Outlook
+  won't render SVG). In her real pipeline (see her `code.txt`) the icon **image src is a FIXED
+  self-hosted URL** reused across every email, and only the social **LINK href is a per-send
+  token**. So: tokenize the link (`[facebook]`), and for the image leave `[icon_facebook]` (she
+  swaps in her fixed icon URL) — or bake in her icon-set URL if she provides it. The icon set is
+  generic infrastructure she already hosts, not per-client data.
 - **Icon fonts / CDNs are OFF-LIMITS.** Font Awesome, W3.CSS, Google Material, etc. are icon
   *fonts* needing `<link>`/`<style>` (banned) — they render as empty boxes in email. "Use icons"
   means emitting `[icon_*]` **tokens only**; the agent never hotlinks an icon CDN or fetches an
