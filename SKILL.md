@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.13.3"
+  version: "0.13.4"
 ---
 
 # Inline Email Builder
@@ -64,8 +64,13 @@ mobile-friendly. Example brief:
 6. **Keep merge tokens in `[...]` form** for fields the backend fills (see `references/tokens.md`).
 7. **Always end with a footer** — `[contact]` + an `[unsubscribe]` link + a "view in browser" link.
    Marketing email legally requires unsubscribe; never omit it.
-8. **Vietnamese copy uses full diacritics** (`Cảm ơn`, `Giảm 20%`, `Dùng mã`) — NEVER tiếng Việt
-   không dấu. Applies to every text node.
+8. **Vietnamese-safe typography (CRITICAL).**
+   (a) Copy uses full diacritics (`Cảm ơn`, `Giảm 20%`) — NEVER tiếng Việt không dấu.
+   (b) **Font stack MUST lead with `"Helvetica Neue", Helvetica` (then Arial), or be
+   `Georgia, "Times New Roman", serif` / `Tahoma`. NEVER lead with `Arial`** — Arial **squashes the
+   base letter** of stacked-diacritic chars (`ộ ệ ề ự ễ`) on macOS. Use
+   `"Helvetica Neue", Helvetica, Arial, sans-serif`, NOT `Arial, Helvetica, sans-serif`.
+   (c) Heading `line-height ≥ 1.3`. Set the font stack inline on every text element.
 
 ## Token convention (compatible with existing pipeline)
 
