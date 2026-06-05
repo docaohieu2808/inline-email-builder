@@ -32,25 +32,16 @@ Verified: renders side-by-side at 700px and stacked at 380px with zero media que
 > Do NOT use Bootstrap (or any external CSS framework) in email — clients strip the stylesheet
 > and ignore its grid/flex. The fluid inline-block pattern above replaces it.
 
-### If the pipeline DOES allow a `<style>` block
-Some ESPs permit one `<style>` in the fragment. If confirmed allowed, you may add media-query
-stacking for tighter breakpoint control (e.g. `@media (max-width:600px){...}`). Keep critical
-styling inline too (Gmail can still strip `<style>` in forwarded/clipped views) — treat the
-`<style>` as progressive enhancement, never the only source of layout.
-
 ## 4. Images
-- **Absolute `https://` URLs only.** No local paths, no `file://`, no relative paths.
-- Source from the user's **licensed-stock host/API** (see stub below) or a provided CDN URL.
-- **Images/logo are the user's job, not yours.** The skill only writes the `<img>` tag with correct
-  responsive inline styling and a `[token]` src; she sources, optimizes (file size/format), sizes,
-  and fills the real image. Don't fetch, generate, optimize, or advise on her image files.
+- **Absolute `https://` URLs only.** No local, relative, or `file://` paths.
 - Every `<img>` needs a meaningful `alt`. Decorative-only images may use `alt=''` deliberately.
 - Don't put critical text inside images (clients block images by default → blank email).
+- The images themselves are the user's — see "Images are entirely the user's" below.
 
 ## 5. Markup hygiene
 - Single-quote attributes (`style='...'`) to match the existing templates.
 - Use entities: `&copy;`, `&amp;`, `&nbsp;`.
-- Add a hidden preheader div for inbox preview text (see skeleton).
+- Add a hidden preheader div for inbox preview text (see `templates/examples/`).
 - Use web-safe font stacks (Arial/Helvetica, Georgia, Tahoma, Verdana). Custom web fonts need
   `<style>`/`@font-face` → not allowed here; pick a web-safe stack instead.
 
@@ -63,8 +54,8 @@ styling inline too (Gmail can still strip `<style>` in forwarded/clipped views) 
 Modern clients first (Gmail web/app, Apple Mail, Outlook.com, iOS/Android mail). The div-based
 fluid approach is intentional. NOTE: legacy **Outlook desktop (Word engine)** ignores `max-width`
 and `box-shadow` and may render full-width — acceptable per the existing template's choices. If
-strict Outlook-desktop parity is ever required, that needs table-based layout + VML (out of scope
-for v0.1; raise it before adding).
+strict Outlook-desktop parity is ever required, that needs table-based layout + VML (out of scope;
+raise it before adding).
 
 ## Images are entirely the user's — do NOT automate or spec
 The skill never auto-fetches, generates, hot-links, optimizes, sizes, specs, or invents an image

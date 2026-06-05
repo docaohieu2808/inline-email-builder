@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.8.4"
+  version: "0.9.0"
 ---
 
 # Inline Email Builder
@@ -58,8 +58,8 @@ mobile-friendly. Example brief:
 2. **Inline CSS only** — every style lives in a `style='...'` attribute. No classes for styling.
 3. **Responsive WITHOUT media queries** — fluid technique: `width:100%` + `max-width:Npx` +
    `margin:0 auto`; images `width:100%; max-width:Npx; height:auto; display:block`.
-4. **Images = absolute URLs** (`https://...`). Never local paths, never `<style>`-based bg for
-   critical content. Keep file size low; prefer the user's licensed-stock host.
+4. **Images = absolute `https://` URLs** (never local/relative). Sourcing, sizing & hosting are
+   the user's — see "Logo, images, links" below.
 5. **Every `<img>` has meaningful `alt`.** Single-quote attributes (matches existing pipeline).
 6. **Keep merge tokens in `[...]` form** for fields the backend fills (see `references/tokens.md`).
 
@@ -67,7 +67,7 @@ mobile-friendly. Example brief:
 
 Reuse the bracket tokens the team already uses; fill concrete values when the brief gives
 them, otherwise LEAVE the token for their merge system:
-`[logo] [title] [content] [domain] [banner] [facebook] [twitter] [youtube] [instagram]
+`[logo] [title] [content] [domain] [banner] [facebook] [instagram] [tiktok] [youtube]
 [cta_text] [cta_url] [contact] [name] [unsubscribe]`
 
 ## Workflow
@@ -77,21 +77,19 @@ them, otherwise LEAVE the token for their merge system:
    auto-generate a value that fits**; never block on optional fields. **All client-specific data
    (logo, links, images) stays as `[tokens]`** for her to fill in her editor — do not ask for it.
    Only ask if the brief is essentially empty.
-2. **Theme + visual style** → pick a 2–3 color palette + web-safe font fitting the industry
-   (contrast ≥ 4.5:1, see `references/theming-guide.md`) AND a look — modern minimal, bold
-   dark, editorial, duotone, bento… see `references/modern-style.md`. Style is a separate dial
-   from layout; vary it per brief.
+2. **Theme + visual style** → harmonize a 2–3 colour palette with the **brand's stated colour**
+   (it's given — don't invent one) + a web-safe font fitting the industry (contrast ≥ 4.5:1, see
+   `references/theming-guide.md`), and pick a look — modern minimal, dark, editorial, duotone,
+   bento… see `references/modern-style.md`. Style is a separate dial from layout; vary it per brief.
 3. **Choose a fresh layout for THIS brief** — pick an archetype from
-   `references/layout-patterns.md` (or compose a new one) that fits the occasion; do not
-   default to the same structure every time. Build it from the blocks in
-   `templates/blocks/`; `templates/base-skeleton.html` and `templates/examples/*` are
-   reference starting points to remix, not a required skeleton. For "image + text" sections
-   that sit side-by-side on desktop and stack on mobile, use `templates/blocks/media-row.html`
-   (fluid inline-block, no media query, no Bootstrap — see "Multi-column" in
-   `references/email-html-rules.md`).
+   `references/layout-patterns.md` (or compose a new one) that fits the occasion; don't default
+   to the same structure every time. Remix the concrete designs in `templates/examples/*` —
+   reference starting points, not a required skeleton. For "image + text" sections that sit
+   side-by-side on desktop and stack on mobile, use `templates/blocks/media-row.html` (fluid
+   inline-block, no media query, no Bootstrap — see "Multi-column" in `references/email-html-rules.md`).
 4. **Write copy** for `[title]` + `[content]` in the requested tone/language.
-5. **Fill** inline styles with the theme. Only insert image URLs the user **explicitly
-   provided**; otherwise leave the image `[token]` — image sourcing/sizing is hers.
+5. **Fill** inline styles with concrete theme colours (real hex, harmonized with the brand
+   colour). Leave every image as its `[token]` unless the user explicitly provided a URL.
 6. **Validate** — run the linter and fix every ERROR before returning. Run it from THIS
    skill's own directory (works wherever the skill is installed — `.codex/skills/`,
    `.claude/skills/`, etc.):
@@ -99,8 +97,7 @@ them, otherwise LEAVE the token for their merge system:
    cd <this-skill-directory> && python3 scripts/validate_email.py <output.html>
    ```
 7. **Return** the final fragment in a fenced ```html block, then a short **"fill these" list** —
-   the `[token]` placeholders she replaces in her editor (logo, images, links). Never fetch,
-   generate, optimize, or invent image URLs; just leave the tokens. Image sourcing/sizing is hers.
+   the `[token]` placeholders she replaces in her editor (logo, images, links).
 
 ## Quality upgrades over legacy templates
 
@@ -118,8 +115,3 @@ images, and URLs are 100% hers: she sources them, optimizes/sizes the files, and
 editor. The agent never receives, fetches, generates, optimizes, specs, or invents them — just
 leaves clean tokens. (Bonus: client data stays off the agent.)
 
-## Scaling later (not yet — YAGNI)
-
-This is a per-email **skill** (human picks + reviews). If briefs ever arrive as a batch
-(a sheet of N clients × brand data), wrap this in a workflow that loops `fill_tokens.py`.
-Do not build the batch path until there is real batch input.

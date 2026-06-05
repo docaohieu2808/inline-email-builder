@@ -37,17 +37,18 @@ Layout codes L1–L7 and Style codes S1–S8 are defined in `picker-layout-style
 | Giao dịch (transactional) | L6 Receipt | S1 Tối giản / S8 Cổ điển |
 
 ## C. Industry → style/palette LEAN  (context, not a choice — already given)
-Use to refine the style picked from A/B so it fits the trade.
-| Ngành | Style lean | Tông màu hay gặp |
-|---|---|---|
-| Nail / Spa / Beauty | Luxe · Tối giản | hồng pastel, teal, gold |
-| Nhà hàng / F&B | Rực rỡ · Tạp chí | terracotta, đỏ, kem |
-| Thời trang / Retail | Tạp chí · Dark · Duotone | đen-trắng, gold |
-| Fitness / Gym | Dark · Rực rỡ | xanh lá, cam, đen |
-| Mỹ phẩm | Luxe · Duotone | mauve, hồng |
-| Tech / SaaS | Tối giản · Dark | xanh dương, tím |
-| Giáo dục | Tối giản · Rực rỡ | xanh, vàng |
-| BĐS / Cao cấp | Luxe · Tạp chí | đen, gold, navy |
+Use to refine the style picked from A/B so it fits the trade. (Palettes per industry live in
+`theming-guide.md`; but the brand's own colour is given — harmonize with that first.)
+| Ngành | Style lean |
+|---|---|
+| Nail / Spa / Beauty | Luxe · Tối giản |
+| Nhà hàng / F&B | Rực rỡ · Tạp chí |
+| Thời trang / Retail | Tạp chí · Dark · Duotone |
+| Fitness / Gym | Dark · Rực rỡ |
+| Mỹ phẩm | Luxe · Duotone |
+| Tech / SaaS | Tối giản · Dark |
+| Giáo dục | Tối giản · Rực rỡ |
+| BĐS / Cao cấp | Luxe · Tạp chí |
 
 ## How to recommend (agent behavior)
 1. From the brief get: industry + brand colors (GIVEN) and occasion + campaign (VARIABLE).
