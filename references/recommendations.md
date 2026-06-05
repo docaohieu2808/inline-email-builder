@@ -50,9 +50,25 @@ Use to refine the style picked from A/B so it fits the trade. (Palettes per indu
 | Giáo dục | Tối giản · Rực rỡ |
 | BĐS / Cao cấp | Luxe · Tạp chí |
 
+## Vary even within the SAME occasion (avoid sameness — CRITICAL)
+Two emails of the same occasion (e.g. two promos) must NOT come out with the same structure. Each
+occasion has SEVERAL valid compositions — rotate them; don't reuse one component recipe. For a
+**promo**, pick a *different* one each time:
+- **Hero + benefit list + offer box** (service-led).
+- **Product grid / catalog** — 2×N products, each image + name + price/discount (when the brand sells products).
+- **Single giant offer** — minimal: logo + huge "30% OFF" + one line + CTA.
+- **Featured product / bundle** — one hero product + a couple of specs + offer.
+- **Voucher-code centric** — big dashed code box.
+
+> **ANTI-PATTERN (the trap):** do NOT default to *eyebrow → headline → 3 `✓` → tinted offer box →
+> CTA* for every promo. That recipe is ONE option, not THE template. Change the composition each
+> time — vary section count, benefit-list vs product-grid vs testimonial, hero vs no-hero, where the
+> offer sits, centred vs left. Colour + copy changing is NOT enough; the **structure** must differ.
+
 ## How to recommend (agent behavior)
 1. From the brief get: industry + brand colors (GIVEN) and occasion + campaign (VARIABLE).
 2. Pick Layout + Style from A/B, then nudge the style with C and harmonize with the brand colors.
+   Deliberately pick a composition you have NOT just used (see "Vary even within the same occasion").
 3. Say it in Vietnamese, short, with the reason + an out:
    > "Mình đề xuất **Hero + Luxe**, tông hồng–gold (hợp nail + khai trương sang). OK không, hay đổi?"
 4. She accepts, tweaks ("tối giản hơn đi"), or names her own — then build. If she gave nothing to
