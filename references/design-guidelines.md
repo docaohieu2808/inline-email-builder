@@ -40,7 +40,8 @@ Minimal · Dark · Luxe · Editorial · Duotone · Bento · Bright · Classic. W
 | Logo / header | top of email — **vary the placement** per design: left, centred, with a tagline, or inside a coloured brand band. Don't always default to top-left. |
 | Eyebrow | small UPPERCASE, letter-spaced, accent colour, above headline |
 | Hero image | full-width fluid (`width:100%; max-width; height:auto`), rounded if modern |
-| Offer / voucher box | tinted bg (pastel of accent) OR thin/dashed border; label + big offer; centred |
+| Offer box (no code) | a **plain % / amount** offer ("Giảm 20%") with NO code → **SOLID tinted box** (pastel of accent), label + big offer, centred. **Do NOT use a dashed border here.** |
+| Coupon-code box | **dashed / cut-out border is ONLY for an actual code** (`DCD1007`) — the "clip this coupon" metaphor. No code → not dashed. |
 | CTA button | ONE primary, padded `<a>` with solid accent bg + white text, rounded; never an image |
 | Benefit list | `✓` in accent + short text |
 | Service card / row | image + bold title + 1-line description (use `media-row` for 2-col → stacks on mobile) |
