@@ -78,4 +78,8 @@ Both are valid — pick to match the style:
 - **Icon images** — referenced as `[icon_facebook]` etc. Suit **vibrant / playful** styles. They
   are a **reusable hosted set** (generic, not client-specific) the user hosts once and reuses.
   Must be **PNG/GIF, never SVG** (Outlook won't render SVG).
-Default to text; use icons when the style calls for it or the user asks.
+- **Icon fonts / CDNs are OFF-LIMITS.** Font Awesome, W3.CSS, Google Material, etc. are icon
+  *fonts* needing `<link>`/`<style>` (banned) — they render as empty boxes in email. "Use icons"
+  means emitting `[icon_*]` **tokens only**; the agent never hotlinks an icon CDN or fetches an
+  icon. She fills the tokens from her own hosted PNG set.
+Default to text; use icons (as tokens) when the style calls for it or the user asks.
