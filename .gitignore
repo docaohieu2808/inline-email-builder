@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# Brand profiles hold client URLs — keep real ones local, ship only the template
+brand-profiles/*.json
+!brand-profiles/EXAMPLE.json

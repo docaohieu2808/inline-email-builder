@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.3.1"
+  version: "0.4.0"
 ---
 
 # Inline Email Builder
@@ -52,7 +52,9 @@ them, otherwise LEAVE the token for their merge system:
 
 1. **Parse brief** → the user fills the form in `references/brief-input-template.md`
    (industry, occasion, brand, style, layout, content, images, links, tone/language).
-   **Any field left blank → auto-generate a value that fits the rest of the brief**; never
+   **If the brief names a brand that has a saved profile, load it first** (see "Brand profiles"
+   below) to pre-fill logo/colors/social/contact/links — only the per-email parts are new.
+   **Any other field left blank → auto-generate a value that fits the rest of the brief**; never
    block on optional fields. Images/links not provided stay as `[tokens]` and go into the
    final "still needed" list. Only ask the user if the brief is essentially empty.
 2. **Theme + visual style** → pick a 2–3 color palette + web-safe font fitting the industry
@@ -92,6 +94,21 @@ them, otherwise LEAVE the token for their merge system:
 - Avoid fragile spacing hacks (e.g. hard-coded `margin-bottom:230px`); use padding inside
   blocks instead.
 - Bulletproof CTA = padded `<a>` with inline background (no image-only buttons).
+
+## Brand profiles (reuse per-client constants)
+
+A client's constants (logo, colors, social, contact, unsubscribe) repeat across every email —
+save them once per brand instead of re-typing. Supports many brands (one file each). See
+`references/brand-profiles.md`. Real profiles live in `brand-profiles/<slug>.json` and are
+**gitignored** (never pushed — they hold client URLs); only `EXAMPLE.json` ships.
+
+```bash
+cd <this-skill-directory>
+python3 scripts/brand_profile.py new <slug>     # scaffold, then edit with real values
+python3 scripts/brand_profile.py apply <slug> out.html   # fill brand [tokens] in a fragment
+```
+When the brief names a brand with a profile, pre-fill its tokens and seed the theme from its
+colors. Profiles never hold purchased images or per-email copy.
 
 ## Image sourcing — manual, never automated
 

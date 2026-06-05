@@ -1,0 +1,17 @@
+{
+  "name": "Example Salon",
+  "logo": "https://example.com/assets/logo.png",
+  "domain": "https://example.com",
+  "colors": {
+    "accent": "#ff6f91",
+    "heading": "#66d0d0",
+    "text": "#333333",
+    "bg_page": "#fef6f8",
+    "bg_card": "#ffffff"
+  },
+  "facebook": "https://facebook.com/example",
+  "instagram": "https://instagram.com/example",
+  "youtube": "https://youtube.com/@example",
+  "contact": "123 Example Ave · (555) 000-0000",
+  "unsubscribe": "https://example.com/unsubscribe"
+}
