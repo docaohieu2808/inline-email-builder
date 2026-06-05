@@ -39,11 +39,18 @@ Verified: renders side-by-side at 700px and stacked at 380px with zero media que
 - The images themselves are the user's — see "Images are entirely the user's" below.
 
 ## 4b. Background images (optional — her real templates use them)
-A decorative card/section background via CSS is supported in modern clients (Gmail, Apple Mail, iOS):
-`background:url('[bg_image]') top center no-repeat;` (optionally `background-size:cover;`).
-- **ALWAYS pair it with a solid `background-color` fallback on the same element.** Outlook desktop
-  (Word engine) ignores CSS background images, and Gmail blocks images until the user loads them —
-  the fallback colour is what shows there, and any overlaid text must stay readable on it.
+A decorative card/section background via CSS is supported in modern clients (Gmail, Apple Mail, iOS).
+**Write it so the fallback colour SURVIVES — this is the part that's easy to get wrong:**
+- **Longhand (safest):** `background-color:#FALLBACK; background-image:url('[bg_image]');
+  background-position:top center; background-repeat:no-repeat; background-size:cover;`
+- **Or shorthand WITH the colour inside it:** `background:#FALLBACK url('[bg_image]') top center no-repeat;`
+- **TRAP — NEVER write `background-color:#X;` then `background:url(...) ...;`** on the same element.
+  The `background` shorthand **resets `background-color` to `transparent`**, wiping your fallback. The
+  colour must live *inside* the shorthand, or use the longhand `background-image` (which leaves
+  `background-color` alone).
+- **ALWAYS keep that fallback colour.** Outlook desktop (Word engine) ignores CSS background images,
+  and Gmail blocks images until the user loads them — the fallback colour is what shows there, and any
+  overlaid text must stay readable on it.
 - **Keep the image a `[token]`** (e.g. `[bg_image]`) — it's the user's asset, `https://` only.
 - **Don't rely on a bg image for text legibility.** If contrast over the image is risky, put the text
   on a solid inner box (as her sample does: artwork on the outer card, white inner box for `[content]`).

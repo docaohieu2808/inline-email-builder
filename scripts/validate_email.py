@@ -77,7 +77,21 @@ def check(html: str):
     if not re.search(r"display\s*:\s*none", scan, re.IGNORECASE):
         warns.append("no hidden preview text (preheader) — add a display:none teaser div near the top")
 
-    # 8. Size hint.
+    # 8. Background shorthand AFTER background-color wipes the fallback colour.
+    #    `background-color:#x; background:url(...)...` → the shorthand resets colour to transparent,
+    #    so the fallback is lost (breaks Outlook / image-blocked rendering).
+    for sval in re.findall(r"style\s*=\s*'([^']*)'", scan):
+        col = re.search(r"background-color\s*:", sval)
+        sh = re.search(r"(?<![\w-])background\s*:\s*([^;]*url\([^;]*)", sval)
+        if col and sh and sh.start() > col.start():
+            if not re.search(r"#[0-9a-fA-F]{3,8}|rgb|hsl|transparent|\bwhite\b|\bblack\b",
+                             sh.group(1)):
+                warns.append("background shorthand after background-color resets the fallback to "
+                             "transparent — put the colour inside the shorthand "
+                             "(background:#hex url(...)) or use the background-image longhand")
+                break
+
+    # 9. Size hint.
     kb = len(html.encode("utf-8")) / 1024
     if kb > 100:
         warns.append(f"fragment is {kb:.0f} KB — Gmail clips >102 KB; trim if close")
