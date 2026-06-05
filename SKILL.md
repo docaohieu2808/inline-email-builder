@@ -68,8 +68,8 @@ them, otherwise LEAVE the token for their merge system:
    (fluid inline-block, no media query, no Bootstrap — see "Multi-column" in
    `references/email-html-rules.md`).
 4. **Write copy** for `[title]` + `[content]` in the requested tone/language.
-5. **Fill** inline styles with the theme; insert absolute image URLs (from the user's
-   licensed-stock API/host — ask for the URL or leave `[token]` + note if unavailable).
+5. **Fill** inline styles with the theme. Only insert image URLs the user **explicitly
+   provided**; otherwise leave the image `[token]` (images are bought manually — see step 7).
 6. **Validate** — run the linter and fix every ERROR before returning. Run it from THIS
    skill's own directory (works wherever the skill is installed — `.codex/skills/`,
    `.claude/skills/`, etc.):
