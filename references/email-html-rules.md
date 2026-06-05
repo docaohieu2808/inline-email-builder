@@ -70,3 +70,12 @@ for v0.1; raise it before adding).
 The skill never auto-fetches, generates, hot-links, optimizes, sizes, specs, or invents an image
 URL. For every image just leave its `[token]` (with correct responsive `<img>` styling). The user
 sources, optimizes, and fills the real image herself. Only use an image URL she explicitly provides.
+
+## Social links: text or icon
+Both are valid — pick to match the style:
+- **Text** (e.g. `Facebook · Instagram`) — lightest (0 images), always renders, never breaks.
+  Default for **luxe / minimal / editorial** styles.
+- **Icon images** — referenced as `[icon_facebook]` etc. Suit **vibrant / playful** styles. They
+  are a **reusable hosted set** (generic, not client-specific) the user hosts once and reuses.
+  Must be **PNG/GIF, never SVG** (Outlook won't render SVG).
+Default to text; use icons when the style calls for it or the user asks.
