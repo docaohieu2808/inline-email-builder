@@ -28,5 +28,6 @@ judgment must — is it complete, clear, and good? Fix anything that fails, then
 - [ ] Multi-column rows (stats / cards / grid) fit cleanly 3-up or 2-up on desktop — **no 2+1 orphan**.
 - [ ] Side-by-side cards: **authored to ~equal line count** (list item = 1 line; paragraph ≈ chars÷30). `min-height` only floors small diffs — it can't shorten a longer card. If line counts can't match, **stack** instead.
 - [ ] **`font-family` is set on every text element** (h1/p/a/div), not only the wrapper — else Outlook falls back to Times.
+- [ ] No region uses a **CSS background image as its only content** — if the image IS the content, it's a foreground `<img>` (else the region is blank when the image doesn't load).
 
 If anything is off, fix and re-check — then return the fragment + the "fill these" list.

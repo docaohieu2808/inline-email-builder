@@ -40,7 +40,15 @@ Verified: renders side-by-side at 700px and stacked at 380px with zero media que
 
 ## 4b. Background images (optional — her real templates use them)
 A decorative card/section background via CSS is supported in modern clients (Gmail, Apple Mail, iOS).
-**Write it so the fallback colour SURVIVES — this is the part that's easy to get wrong:**
+
+- **A CSS background image is a DECORATIVE backdrop behind real content — NEVER a region's only
+  content.** If a column/section is meant to *show* a picture (product, hero, lookbook), use a
+  **foreground `<img>`** — it always renders, carries `alt`, and the region is never blank. A
+  bg-image box whose only content is a small label over a huge top `padding` becomes an **empty
+  column** whenever the image is absent (Outlook, image-blocked, or an unfilled token). **Rule of
+  thumb: image IS the content → `<img>`; image sits BEHIND text → CSS background (+ fallback).**
+
+**Write the background so the fallback colour SURVIVES — this is the part that's easy to get wrong:**
 - **Longhand (safest):** `background-color:#FALLBACK; background-image:url('[bg_image]');
   background-position:top center; background-repeat:no-repeat; background-size:cover;`
 - **Or shorthand WITH the colour inside it:** `background:#FALLBACK url('[bg_image]') top center no-repeat;`
