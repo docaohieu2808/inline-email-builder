@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.8.0"
+  version: "0.8.1"
 ---
 
 # Inline Email Builder
@@ -38,8 +38,8 @@ editor — that's trivial for her, and it keeps client data OFF the agent.
 - **Do NOT ask for, store, or insert real client data** (logo URLs, client links, real images).
   Leave them as `[tokens]`. Privacy: client info should never need to reach the agent. (If she
   volunteers a URL, you may use it — but never request it, and never persist client data.)
-- After the code, give: an **image-buy spec** (what to purchase + size) and a short **"fill these"
-  list** of the placeholders she'll replace in her editor.
+- After the code, give a short **"fill these" list** of the `[token]` placeholders she'll replace
+  (images, logo, links). Don't spec, size, optimize, or suggest images — that's all hers.
 - Run `scripts/validate_email.py` yourself; fix errors silently; surface issues only in plain
   Vietnamese. Optionally offer to save the code to a `.html` file.
 
@@ -98,13 +98,9 @@ them, otherwise LEAVE the token for their merge system:
    ```bash
    cd <this-skill-directory> && python3 scripts/validate_email.py <output.html>
    ```
-7. **Return** the final fragment in a fenced ```html block, then:
-   - **Image spec sheet** — images are PURCHASED per-image by the user, so NEVER auto-fetch,
-     auto-generate, or invent image URLs. Instead, for every image slot leave its `[token]`
-     and output a buying spec so she purchases the right asset once: `token · where it's used
-     · recommended size (px) + aspect ratio · suggested subject/keywords`. Example:
-     `[banner] · top hero · 1280×440 (≈3:1), display 640 wide · "spring pastel nails, soft light"`.
-   - **Tokens left to fill** — the remaining `[link]`/text tokens she must paste real values into.
+7. **Return** the final fragment in a fenced ```html block, then a short **"fill these" list** —
+   the `[token]` placeholders she replaces in her editor (logo, images, links). Never fetch,
+   generate, optimize, or invent image URLs; just leave the tokens. Image sourcing/sizing is hers.
 
 ## Quality upgrades over legacy templates
 
@@ -115,19 +111,12 @@ them, otherwise LEAVE the token for their merge system:
   blocks instead.
 - Bulletproof CTA = padded `<a>` with inline background (no image-only buttons).
 
-## Client data stays with the coder (privacy)
+## Logo, images, links = the coder's job (not ours)
 
-Logo, real links, and purchased images are **filled by the coder in her editor**, not by the
-agent. Always leave them as `[tokens]` and never request or store them — client info should not
-need to reach the agent. The agent's deliverable is the design + code; she does the last-mile fill.
-
-## Image sourcing — manual, never automated
-
-Images are **bought per-image** (each has its own price) from the user's licensed-stock site.
-So the skill **never** auto-fetches, auto-generates, hot-links, or invents an image URL — that
-would cost money and/or break licensing. Always leave the image `[token]` and emit the buying
-spec (see workflow step 7) so she purchases the right asset and pastes its hosted https URL.
-The only images the skill may use directly are ones the user explicitly provides in the brief.
+The skill's deliverable is **the template** — design + code with `[token]` placeholders. Logo,
+images, and URLs are 100% hers: she sources them, optimizes/sizes the files, and fills them in her
+editor. The agent never receives, fetches, generates, optimizes, specs, or invents them — just
+leaves clean tokens. (Bonus: client data stays off the agent.)
 
 ## Scaling later (not yet — YAGNI)
 

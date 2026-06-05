@@ -41,7 +41,9 @@ styling inline too (Gmail can still strip `<style>` in forwarded/clipped views) 
 ## 4. Images
 - **Absolute `https://` URLs only.** No local paths, no `file://`, no relative paths.
 - Source from the user's **licensed-stock host/API** (see stub below) or a provided CDN URL.
-- Keep file size small: prefer optimized JP/PNG/WEBP; target < 200 KB per image, banner < 400 KB.
+- **Images/logo are the user's job, not yours.** The skill only writes the `<img>` tag with correct
+  responsive inline styling and a `[token]` src; she sources, optimizes (file size/format), sizes,
+  and fills the real image. Don't fetch, generate, optimize, or advise on her image files.
 - Every `<img>` needs a meaningful `alt`. Decorative-only images may use `alt=''` deliberately.
 - Don't put critical text inside images (clients block images by default → blank email).
 
