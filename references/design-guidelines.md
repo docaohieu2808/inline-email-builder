@@ -59,12 +59,13 @@ Minimal · Dark · Luxe · Editorial · Duotone · Bento · Bright · Classic. W
   `max-width` must be ≤ `(container_width − side_padding) ÷ N`, or the row wraps to an ugly **2+1
   orphan**. For a ~600px card: **3-up → col ≤ ~165px**, **2-up → col ≤ ~270px** (incl. padding). If
   3 won't fit cleanly, use 2-up or stack — never ship a 3-up that breaks to 2+1.
-- **Side-by-side cards = a matched PAIR (equal height).** Give them **parallel content**: same type
-  + similar length — both a 3-`✓` list, or both a 2-line blurb. **Don't put a list next to a
-  paragraph** (that's what makes one box tall, one short → lopsided). Balance the copy FIRST; then
-  add a `min-height` on the card as a safety net so small text differences don't misalign the boxes.
-  (Email has no reliable auto equal-height — flexbox `align-items:stretch` and `display:table-cell`
-  break in Outlook / don't stack on mobile. So: parallel content + `min-height`, nothing fancier.)
+- **Side-by-side cards should look BALANCED — the issue is unequal HEIGHT, not mixed content types.**
+  A `✓` list next to a paragraph is perfectly fine **if the two boxes end up roughly the same height**
+  (e.g. a 3-item list ≈ a 3-line blurb). What looks lopsided is a tall 3-item list next to a 1-line
+  paragraph. Fix it either way: **match the content length** (lengthen the short one / trim the tall
+  one), and/or add a **`min-height`** so the shorter box floors up to the taller. (No reliable auto
+  equal-height in email — flexbox `align-items:stretch` and `display:table-cell` break in Outlook /
+  don't stack on mobile — so it's content-balance + `min-height`, nothing fancier.)
 
 ## Reminder
 Adapt to the chosen style, but still obey the hard rules + run `validate_email.py`.
