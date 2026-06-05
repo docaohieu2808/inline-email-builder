@@ -59,13 +59,20 @@ Minimal · Dark · Luxe · Editorial · Duotone · Bento · Bright · Classic. W
   `max-width` must be ≤ `(container_width − side_padding) ÷ N`, or the row wraps to an ugly **2+1
   orphan**. For a ~600px card: **3-up → col ≤ ~165px**, **2-up → col ≤ ~270px** (incl. padding). If
   3 won't fit cleanly, use 2-up or stack — never ship a 3-up that breaks to 2+1.
-- **Side-by-side cards should look BALANCED — the issue is unequal HEIGHT, not mixed content types.**
-  A `✓` list next to a paragraph is perfectly fine **if the two boxes end up roughly the same height**
-  (e.g. a 3-item list ≈ a 3-line blurb). What looks lopsided is a tall 3-item list next to a 1-line
-  paragraph. Fix it either way: **match the content length** (lengthen the short one / trim the tall
-  one), and/or add a **`min-height`** so the shorter box floors up to the taller. (No reliable auto
-  equal-height in email — flexbox `align-items:stretch` and `display:table-cell` break in Outlook /
-  don't stack on mobile — so it's content-balance + `min-height`, nothing fancier.)
+- **Side-by-side cards: balance the HEIGHT — and YOU control it because you write the copy.**
+  Rendered height can't be read off the HTML (it depends on wrapping + font), so don't try to
+  *detect* imbalance after the fact — **author both cards to a similar line count from the start.**
+  Estimate lines per card from the code: a `✓`/bullet list = **one line per item**; a paragraph ≈
+  **`characters ÷ ~30`** lines (for a ~270px card). Keep the two within ~1 line of each other (mixed
+  list + paragraph is fine if the line counts match).
+  - **`min-height` is only a FLOOR** — it equalises *only when BOTH cards fit inside it*. A paragraph
+    taller than the `min-height` still overflows, so the boxes stay uneven. min-height fixes *small*
+    differences; it can NOT shorten a genuinely longer card. (This is why a long paragraph still looks
+    lopsided despite a min-height.)
+  - If the two contents can't be made similar length, **stack them full-width** (one column) — then
+    there's no side-by-side height problem at all.
+  - (No auto equal-height in email: flexbox `align-items:stretch` / `display:table-cell` break in
+    Outlook or don't stack on mobile.)
 
 ## Reminder
 Adapt to the chosen style, but still obey the hard rules + run `validate_email.py`.
