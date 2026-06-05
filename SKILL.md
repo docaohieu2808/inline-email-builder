@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.15.4"
+  version: "0.15.5"
 ---
 
 # Inline Email Builder
@@ -65,7 +65,9 @@ mobile-friendly. Example brief:
 7. **Always end with a footer** — `[contact]` + an `[unsubscribe]` link + a "view in browser" link.
    Marketing email legally requires unsubscribe; never omit it.
 8. **Vietnamese-safe typography (CRITICAL).**
-   (a) Copy uses full diacritics (`Cảm ơn`, `Giảm 20%`) — NEVER tiếng Việt không dấu.
+   (a) Copy uses full diacritics (`Cảm ơn`, `Giảm 20%`) — NEVER tiếng Việt không dấu — and in **NFC
+   (precomposed)** form, never decomposed/NFD (else accents render detached: `mềm` → base + a
+   floating mark). The validator flags NFD; normalize with `unicodedata.normalize('NFC', …)`.
    (b) **`font-weight` ≤ 700 (bold) — NEVER 800/900.** Heavy weights **squash the base letter** of
    stacked-diacritic chars (`ộ ệ ề ự ễ`): the `o`/`e` shrinks to fit the two stacked marks inside the
    thick glyph (very visible on macOS). Use `font-weight:bold` (700), never `800`/`900`.

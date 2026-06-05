@@ -91,7 +91,14 @@ def check(html: str):
                              "(background:#hex url(...)) or use the background-image longhand")
                 break
 
-    # 9. Size hint.
+    # 9. Decomposed (NFD) Vietnamese — combining marks render detached ("mềm" → "mềm").
+    if re.search("[\u0300-\u036f]", html):
+        warns.append("text has combining diacritical marks (decomposed/NFD Unicode) — Vietnamese must "
+                     "be NFC (precomposed) or accents render detached. Normalize: "
+                     "python3 -c \"import unicodedata,sys;"
+                     "open('out.html','w').write(unicodedata.normalize('NFC',open('in.html').read()))\"")
+
+    # 10. Size hint.
     kb = len(html.encode("utf-8")) / 1024
     if kb > 100:
         warns.append(f"fragment is {kb:.0f} KB — Gmail clips >102 KB; trim if close")
