@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.7.0"
+  version: "0.8.0"
 ---
 
 # Inline Email Builder
@@ -30,10 +30,11 @@ editor — that's trivial for her, and it keeps client data OFF the agent.
 - **Reply in Vietnamese**, concise.
 - **Your job = the design + code.** Produce a beautiful, rules-compliant, responsive inline-CSS
   fragment with clear `[placeholder]` tokens for everything client-specific.
-- **Layout & style are her two choices.** She won't remember exact names — if she's unsure or
-  asks "có kiểu/layout/style nào", show the numbered Vietnamese menu in
-  `references/picker-layout-style.md`; she picks by number, name, or loose description, and you
-  map it. If she names neither, choose a fitting combo and tell her what you picked.
+- **Recommend Layout + Style — don't make her choose blind.** Brand industry + colors are GIVEN
+  context (never ask her to pick "by color/industry"). From this email's **occasion + campaign**,
+  proactively suggest a fitting Layout + Style with a one-line reason (see
+  `references/recommendations.md`), harmonized with the brand's colors. She accepts or tweaks.
+  Show the full numbered menu (`references/picker-layout-style.md`) only if she wants to browse.
 - **Do NOT ask for, store, or insert real client data** (logo URLs, client links, real images).
   Leave them as `[tokens]`. Privacy: client info should never need to reach the agent. (If she
   volunteers a URL, you may use it — but never request it, and never persist client data.)
