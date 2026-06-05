@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.13.4"
+  version: "0.14.0"
 ---
 
 # Inline Email Builder

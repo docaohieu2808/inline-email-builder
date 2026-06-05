@@ -37,6 +37,7 @@ Minimal · Dark · Luxe · Editorial · Duotone · Bento · Bright · Classic. W
 ## D. Component conventions
 | Block | Convention |
 |---|---|
+| Logo / header | top of email — **vary the placement** per design: left, centred, with a tagline, or inside a coloured brand band. Don't always default to top-left. |
 | Eyebrow | small UPPERCASE, letter-spaced, accent colour, above headline |
 | Hero image | full-width fluid (`width:100%; max-width; height:auto`), rounded if modern |
 | Offer / voucher box | tinted bg (pastel of accent) OR thin/dashed border; label + big offer; centred |

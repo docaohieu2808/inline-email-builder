@@ -65,6 +65,19 @@ occasion has SEVERAL valid compositions — rotate them; don't reuse one compone
 > time — vary section count, benefit-list vs product-grid vs testimonial, hero vs no-hero, where the
 > offer sits, centred vs left. Colour + copy changing is NOT enough; the **structure** must differ.
 
+### Vary the HEADER & FOOTER too — not just the body
+Don't let *logo top-left + a separate social-link footer* harden into a fixed shell. The body is
+not the only place to differ:
+- **Logo placement** — left, **centred**, with a tagline under it, or inside a coloured header band.
+- **Header treatment** — plain logo · logo + a thin "view online" link on the right · a coloured
+  brand band · logo + a one-line value strip.
+- **Social** — a row of icons · text links · **placed in the header** instead of the footer · omitted
+  on minimal/transactional emails.
+- **Footer richness** — minimal (just contact + unsubscribe) vs fuller (tagline + social + address).
+Keep the *required* footer content (**unsubscribe + contact**) every time — only its treatment and
+placement vary. (E.g. a luxe email might centre the logo with a tagline + a hairline footer; a
+promo might left-align the logo with a bold header band and an icon-row footer.)
+
 ## How to recommend (agent behavior)
 1. From the brief get: industry + brand colors (GIVEN) and occasion + campaign (VARIABLE).
 2. Pick Layout + Style from A/B, then nudge the style with C and harmonize with the brand colors.
