@@ -44,6 +44,11 @@ Verified: renders side-by-side at 700px and stacked at 380px with zero media que
 - Add a hidden preheader div for inbox preview text (see `templates/examples/`).
 - Use web-safe font stacks (Arial/Helvetica, Georgia, Tahoma, Verdana). Custom web fonts need
   `<style>`/`@font-face` → not allowed here; pick a web-safe stack instead.
+- **Set `font-family` inline on EVERY text element** (`<h1>`, `<p>`, `<a>`, text `<div>`) — do NOT
+  rely on inheritance from a parent wrapper. Outlook and several clients RESET font-family on
+  `<h1>`/`<p>`/`<td>` to **Times New Roman**, breaking the look (it renders fine in a browser, but
+  wrong in the inbox). Repeat the same stack on each text node. Styled `<div>`s inherit a bit more
+  reliably than `<h1>`/`<p>`, but still set the family explicitly to be safe.
 
 ## 6. Accessibility & deliverability
 - Contrast ≥ 4.5:1 for body text.
