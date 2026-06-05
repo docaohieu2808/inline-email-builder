@@ -1,0 +1,73 @@
+# Email HTML rules (why each constraint exists)
+
+These constraints come from the existing pipeline + how email clients render. Follow them
+exactly; the validator enforces the mechanical ones.
+
+## 1. Fragment only — no document wrapper
+No `<html>`, `<head>`, `<title>`, `<body>`, `<style>`, `<link>`. The backend/ESP injects the
+fragment into its own wrapper. A nested `<html>`/`<style>` would be stripped or break the host
+page. → Output starts at the outermost `<div>`.
+
+## 2. Inline CSS only
+Gmail strips `<style>` blocks in many contexts and ALL clients honor inline `style=`. Every
+visual rule lives in a `style='...'` attribute. Do not rely on `class`/`id` for styling.
+
+## 3. Responsive WITHOUT media queries
+Media queries need `<style>`, which the inline-only pipeline bans. Use the **fluid** technique:
+- Containers: `width:100%; max-width:Npx; margin:0 auto;`
+- Images: `width:100%; max-width:Npx; height:auto; display:block;`
+- Avoid fixed pixel widths on containers.
+Degrades gracefully: on phones the container fills the screen up to `max-width`.
+
+### Multi-column that auto-stacks (NO Bootstrap, NO media query)
+"Image left + text right on desktop → image on top + text below on mobile" is fully doable
+inline. Use the **fluid inline-block wrap** ("media object") in `templates/blocks/media-row.html`:
+- Parent `font-size:0; text-align:center;` (kills inline-block whitespace gap).
+- Each column `display:inline-block; width:100%; max-width:300px; vertical-align:top;` and
+  resets its own `font-size`. The two column divs MUST be adjacent (no whitespace between them).
+- Wide container (≥ ~600px) → both 300px columns sit side by side. Narrow (mobile) → each is
+  100% → they wrap to stacked, in source order (put the image column first for image-on-top).
+Verified: renders side-by-side at 700px and stacked at 380px with zero media queries.
+
+> Do NOT use Bootstrap (or any external CSS framework) in email — clients strip the stylesheet
+> and ignore its grid/flex. The fluid inline-block pattern above replaces it.
+
+### If the pipeline DOES allow a `<style>` block
+Some ESPs permit one `<style>` in the fragment. If confirmed allowed, you may add media-query
+stacking for tighter breakpoint control (e.g. `@media (max-width:600px){...}`). Keep critical
+styling inline too (Gmail can still strip `<style>` in forwarded/clipped views) — treat the
+`<style>` as progressive enhancement, never the only source of layout.
+
+## 4. Images
+- **Absolute `https://` URLs only.** No local paths, no `file://`, no relative paths.
+- Source from the user's **licensed-stock host/API** (see stub below) or a provided CDN URL.
+- Keep file size small: prefer optimized JP/PNG/WEBP; target < 200 KB per image, banner < 400 KB.
+- Every `<img>` needs a meaningful `alt`. Decorative-only images may use `alt=''` deliberately.
+- Don't put critical text inside images (clients block images by default → blank email).
+
+## 5. Markup hygiene
+- Single-quote attributes (`style='...'`) to match the existing templates.
+- Use entities: `&copy;`, `&amp;`, `&nbsp;`.
+- Add a hidden preheader div for inbox preview text (see skeleton).
+- Use web-safe font stacks (Arial/Helvetica, Georgia, Tahoma, Verdana). Custom web fonts need
+  `<style>`/`@font-face` → not allowed here; pick a web-safe stack instead.
+
+## 6. Accessibility & deliverability
+- Contrast ≥ 4.5:1 for body text.
+- Real `alt` text, logical reading order.
+- Always include an `[unsubscribe]` link (legal requirement for marketing email).
+
+## Client support target
+Modern clients first (Gmail web/app, Apple Mail, Outlook.com, iOS/Android mail). The div-based
+fluid approach is intentional. NOTE: legacy **Outlook desktop (Word engine)** ignores `max-width`
+and `box-shadow` and may render full-width — acceptable per the existing template's choices. If
+strict Outlook-desktop parity is ever required, that needs table-based layout + VML (out of scope
+for v0.1; raise it before adding).
+
+## Image API integration (stub — wire when endpoint is known)
+The user has a licensed-stock site with an API. To auto-source images, add a script that:
+1. Takes a query (industry/theme keywords) + size.
+2. Calls the API (needs: base URL, auth header/key, response shape).
+3. Returns an absolute hosted URL to drop into `src`.
+Until wired, ask the user for image URLs or leave `[logo]`/`[banner]` tokens and list them under
+"images needed" in the output.

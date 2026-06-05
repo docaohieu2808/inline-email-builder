@@ -1,0 +1,26 @@
+<!-- Responsive image+text row — "media object".
+     LARGE screen: image and text side by side. SMALL screen: they stack (image on top).
+     Pure INLINE CSS, NO <style>, NO @media. Works via fluid inline-block wrapping:
+     each column is width:100% but max-width:300px, so two of them fit side-by-side when the
+     container is wide (>=~600px) and automatically wrap to stacked when it is narrow (mobile).
+
+     KEY tricks:
+       - parent font-size:0 removes the whitespace gap between inline-block columns;
+         each column resets its own font-size.
+       - the two column <div>s MUST be adjacent (no space/newline between </div> and <div>),
+         otherwise a gap appears.
+       - swap the two columns to get image-RIGHT on desktop (still image-on-top when stacked,
+         because stacking follows source order — put the image column first for image-on-top).
+
+     Outlook desktop (Word engine) ignores max-width/inline-block and will stack full-width —
+     an acceptable graceful fallback. -->
+<div style='font-size:0; text-align:center; margin:8px 0;'>
+  <div style='display:inline-block; width:100%; max-width:300px; vertical-align:top; font-size:16px;'>
+    <img src='[row_image]' alt='[row_image_alt]' style='display:block; width:100%; max-width:300px; height:auto; border:0; margin:0 auto;'/>
+  </div><div style='display:inline-block; width:100%; max-width:300px; vertical-align:top; font-size:16px; text-align:left;'>
+    <div style='padding:16px;'>
+      <div style='font-size:18px; font-weight:bold; color:[color_heading]; margin:0 0 8px 0;'>[row_title]</div>
+      <div style='font-size:15px; line-height:1.6; color:[color_text];'>[row_text]</div>
+    </div>
+  </div>
+</div>
