@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.12.0"
+  version: "0.13.0"
 ---
 
 # Inline Email Builder
@@ -62,6 +62,10 @@ mobile-friendly. Example brief:
    the user's — see "Logo, images, links" below.
 5. **Every `<img>` has meaningful `alt`.** Single-quote attributes (matches existing pipeline).
 6. **Keep merge tokens in `[...]` form** for fields the backend fills (see `references/tokens.md`).
+7. **Always end with a footer** — `[contact]` + an `[unsubscribe]` link + a "view in browser" link.
+   Marketing email legally requires unsubscribe; never omit it.
+8. **Vietnamese copy uses full diacritics** (`Cảm ơn`, `Giảm 20%`, `Dùng mã`) — NEVER tiếng Việt
+   không dấu. Applies to every text node.
 
 ## Token convention (compatible with existing pipeline)
 
@@ -96,9 +100,10 @@ them, otherwise LEAVE the token for their merge system:
    benefits, tone per industry).
 5. **Fill** inline styles with concrete theme colours (real hex, harmonized with the brand
    colour). Leave every image as its `[token]` unless the user explicitly provided a URL.
-6. **Validate & self-review** — run the linter (fix every ERROR), then self-review against
-   `references/quality-checklist.md` (preview text, one clear CTA, unsubscribe, not too long, CTA
-   contrast, tone…). Run the linter from THIS skill's own directory (works wherever installed —
+6. **Validate & self-review** — run the linter (fix every ERROR, and any WARNING that flags a
+   missing required element like unsubscribe), then self-review against
+   `references/quality-checklist.md` (preview text, one clear CTA, **unsubscribe/footer**, full
+   Vietnamese diacritics, not too long, CTA contrast, tone…). Run the linter from THIS skill's own directory (works wherever installed —
    `.codex/skills/`, `.claude/skills/`, etc.):
    ```bash
    cd <this-skill-directory> && python3 scripts/validate_email.py <output.html>

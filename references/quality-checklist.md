@@ -16,6 +16,7 @@ judgment must — is it complete, clear, and good? Fix anything that fails, then
 - [ ] Benefits short & scannable (`✓` list).
 - [ ] ONE offer/ask only; not crammed with extras.
 - [ ] Tone matches the industry + the brief's language.
+- [ ] **If Vietnamese: full diacritics everywhere** (no tiếng Việt không dấu).
 - [ ] No section repeats another's point.
 
 ## Visual

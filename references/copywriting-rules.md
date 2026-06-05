@@ -32,6 +32,12 @@ words, etc.) — those are about form; these are about message.
 
 Match the **language** of the brief (Vietnamese ↔ English) and the audience.
 
+## Vietnamese copy — ALWAYS with full diacritics (CRITICAL)
+When writing Vietnamese, use **proper tone marks / diacritics** ("Cảm ơn", "Giảm 20%", "Dùng mã",
+"Ưu đãi") — **NEVER write tiếng Việt không dấu** ("Cam on", "Giam 20%", "Dung ma"). Stripped-accent
+Vietnamese looks broken/unprofessional. UTF-8 handles it fine; there is no reason to drop accents.
+This applies to every text node: headline, body, buttons, eyebrows, footer, preview text.
+
 ## Don'ts
 - No jargon / filler ("leading provider of…"). No ALL-CAPS shouting (except tiny eyebrows).
 - Don't over-promise; keep claims credible.
