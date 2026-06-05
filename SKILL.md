@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.14.1"
+  version: "0.14.2"
 ---
 
 # Inline Email Builder
@@ -99,6 +99,10 @@ them, otherwise LEAVE the token for their merge system:
    reference starting points, not a required skeleton. For "image + text" sections that sit
    side-by-side on desktop and stack on mobile, use `templates/blocks/media-row.html` (fluid
    inline-block, no media query, no Bootstrap — see "Multi-column" in `references/email-html-rules.md`).
+   **Also pick a header + footer/social treatment that fits THIS style — don't auto-default to
+   logo-top-left + a plain text-link footer every time.** Choose per style: logo left / centred /
+   in a coloured band; social as a text row / **icon row** (`[icon_*]` tokens) / a "Theo dõi:" label /
+   placed in the header. (See "Vary the HEADER & FOOTER too" in `references/recommendations.md`.)
 4. **Write copy** for `[title]` + `[content]` in the requested tone/language, following the
    **format** rules in `references/design-guidelines.md` (headline no full stop, benefits as a `✓`
    list, promo/code in a tinted box…) AND the **messaging** rules in
