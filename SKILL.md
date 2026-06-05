@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.15.5"
+  version: "0.16.0"
 ---
 
 # Inline Email Builder
@@ -72,8 +72,11 @@ mobile-friendly. Example brief:
    stacked-diacritic chars (`ộ ệ ề ự ễ`): the `o`/`e` shrinks to fit the two stacked marks inside the
    thick glyph (very visible on macOS). Use `font-weight:bold` (700), never `800`/`900`.
    (c) Heading `line-height ≥ 1.3` (room for the double diacritics).
-   (d) Web-safe stack set inline on every text element — prefer `"Helvetica Neue", Helvetica, Arial,
-   sans-serif` or `Georgia, "Times New Roman", serif`.
+   (d) Web-safe **SANS** stack set inline on every text element: `"Helvetica Neue", Helvetica, Arial,
+   sans-serif` (or `Tahoma` — best Vietnamese). **NEVER `Georgia` / `Times New Roman` (serif) for
+   Vietnamese** — they lack/mis-render the stacked-diacritic glyphs (`ề ộ ậ ữ`) on Windows, so the
+   tone mark detaches (`mềm` → "Mề f m"). For a luxe/editorial feel, get it from layout + spacing +
+   weight, NOT a serif. (Serif is fine only for English-only copy.)
 
 ## Token convention (compatible with existing pipeline)
 

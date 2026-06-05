@@ -18,9 +18,14 @@ If the brand provides colors, use those; the table is only a fallback.
 
 ## Fonts (web-safe stacks — no web fonts, they need `<style>`)
 - Clean/modern: `"Helvetica Neue", Helvetica, Arial, sans-serif`
-- Warm/editorial: `Georgia, "Times New Roman", serif`
-- Friendly / extra-safe Vietnamese: `Tahoma, Verdana, sans-serif`
+- Extra-safe Vietnamese / friendly: `Tahoma, Verdana, sans-serif`
+- Editorial/luxe feel: stay sans but lean on **letter-spacing + weight + whitespace** (a serif is NOT
+  worth it for Vietnamese — see below).
 Set the stack inline on **every** text element (not just the wrapper — see `email-html-rules.md`).
+
+**⚠ Do NOT use `Georgia` / `Times New Roman` (serif) for Vietnamese.** On Windows they lack/mis-render
+the double-diacritic glyphs (`ề ộ ậ ữ`) → the tone mark **detaches** ("mềm" → "Mề f m"). Sans (Arial /
+Tahoma / Helvetica Neue) renders Vietnamese correctly. Serif is OK only for English-only copy.
 
 **Vietnamese diacritics — IMPORTANT:** the base letter of stacked-diacritic chars (`ộ ệ ề ự ễ`)
 gets **squashed by heavy font-weights** — cap at `font-weight:bold` (700), **NEVER 800/900** (the
