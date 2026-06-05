@@ -29,7 +29,7 @@ Tahoma / Helvetica Neue) renders Vietnamese correctly. Serif is OK only for Engl
 
 **Vietnamese diacritics — IMPORTANT:** the base letter of stacked-diacritic chars (`ộ ệ ề ự ễ`)
 gets **squashed by heavy font-weights** — cap at `font-weight:bold` (700), **NEVER 800/900** (the
-heavy glyph shrinks the `o`/`e` to fit the two stacked marks; very visible on macOS). Give headings
+heavy glyph shrinks the `o`/`e` to fit the two stacked marks; very visible at heading sizes). Give headings
 `line-height ≥ 1.3` for vertical room. Any web-safe stack works; `"Helvetica Neue", Helvetica,
 Arial, sans-serif` is a clean default.
 

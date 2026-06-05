@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.16.2"
+  version: "0.16.3"
 ---
 
 # Inline Email Builder
@@ -70,7 +70,7 @@ mobile-friendly. Example brief:
    floating mark). The validator flags NFD; normalize with `unicodedata.normalize('NFC', …)`.
    (b) **`font-weight` ≤ 700 (bold) — NEVER 800/900.** Heavy weights **squash the base letter** of
    stacked-diacritic chars (`ộ ệ ề ự ễ`): the `o`/`e` shrinks to fit the two stacked marks inside the
-   thick glyph (very visible on macOS). Use `font-weight:bold` (700), never `800`/`900`.
+   thick glyph (very visible at heading sizes). Use `font-weight:bold` (700), never `800`/`900`.
    (c) Heading `line-height ≥ 1.3` (room for the double diacritics).
    (d) Web-safe **SANS** stack set inline on every text element: `"Helvetica Neue", Helvetica, Arial,
    sans-serif` (or `Tahoma` — best Vietnamese). **NEVER `Georgia` / `Times New Roman` (serif) for
