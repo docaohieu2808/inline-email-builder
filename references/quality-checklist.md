@@ -17,12 +17,14 @@ judgment must — is it complete, clear, and good? Fix anything that fails, then
 - [ ] ONE offer/ask only; not crammed with extras.
 - [ ] Tone matches the industry + the brief's language.
 - [ ] **If Vietnamese: full diacritics everywhere** (no tiếng Việt không dấu).
-- [ ] No section repeats another's point.
+- [ ] **No ALL-CAPS body/descriptions** (uppercase only for small eyebrows/labels).
+- [ ] No section repeats another's point; cut any block that doesn't earn its place.
 
 ## Visual
 - [ ] CTA colour clearly stands out against its background.
 - [ ] Heading readable on its bg; body contrast ≥ 4.5:1; ≤ ~3 hues; dark mode avoids pure-black-on-transparent.
 - [ ] Every `<img>` has a meaningful `alt`.
 - [ ] Reads fine narrow (≤ 400px) — single column / rows stack.
+- [ ] Multi-column rows (stats / cards / grid) fit cleanly 3-up or 2-up on desktop — **no 2+1 orphan**.
 
 If anything is off, fix and re-check — then return the fragment + the "fill these" list.

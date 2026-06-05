@@ -22,6 +22,8 @@ Minimal · Dark · Luxe · Editorial · Duotone · Bento · Bright · Classic. W
 - **Bullets** — short, **< ~12 words** each, usually no full stop.
 - **CTA label** — an action phrase, **no full stop** ("Book now", "Nhận ưu đãi 20%").
 - **Eyebrow/label** — UPPERCASE, letter-spacing 2–3px, small (11–13px), accent colour, above the headline.
+- **UPPERCASE is ONLY for small eyebrows/labels.** Headlines, body, descriptions, card text are
+  **sentence case** — NEVER `text-transform:uppercase` on a paragraph/description (it reads as shouting).
 - One typeface family per email; hierarchy comes from size + weight, not many fonts.
 
 ## C. Content formatting rules
@@ -48,6 +50,13 @@ Minimal · Dark · Luxe · Editorial · Duotone · Bento · Bright · Classic. W
   full-width banner (unless the style is "bright").
 - One accent colour does the heavy lifting; keep everything else neutral.
 - Let it breathe — spacing over borders; only add a border/shadow when it earns its place.
+- **Keep it TIGHT.** A typical email = logo → hero/headline → 1–3 sections → offer → CTA → footer.
+  Don't cram every possible block (header-row + intro + banner + grid + cards + …). Restraint reads
+  premium; a long busy email reads cheap. If a section doesn't earn its place, cut it.
+- **Multi-column must actually FIT** (stat rows, feature cards, product grids). Each column's
+  `max-width` must be ≤ `(container_width − side_padding) ÷ N`, or the row wraps to an ugly **2+1
+  orphan**. For a ~600px card: **3-up → col ≤ ~165px**, **2-up → col ≤ ~270px** (incl. padding). If
+  3 won't fit cleanly, use 2-up or stack — never ship a 3-up that breaks to 2+1.
 
 ## Reminder
 Adapt to the chosen style, but still obey the hard rules + run `validate_email.py`.
