@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.14.0"
+  version: "0.14.1"
 ---
 
 # Inline Email Builder
@@ -66,11 +66,12 @@ mobile-friendly. Example brief:
    Marketing email legally requires unsubscribe; never omit it.
 8. **Vietnamese-safe typography (CRITICAL).**
    (a) Copy uses full diacritics (`Cảm ơn`, `Giảm 20%`) — NEVER tiếng Việt không dấu.
-   (b) **Font stack MUST lead with `"Helvetica Neue", Helvetica` (then Arial), or be
-   `Georgia, "Times New Roman", serif` / `Tahoma`. NEVER lead with `Arial`** — Arial **squashes the
-   base letter** of stacked-diacritic chars (`ộ ệ ề ự ễ`) on macOS. Use
-   `"Helvetica Neue", Helvetica, Arial, sans-serif`, NOT `Arial, Helvetica, sans-serif`.
-   (c) Heading `line-height ≥ 1.3`. Set the font stack inline on every text element.
+   (b) **`font-weight` ≤ 700 (bold) — NEVER 800/900.** Heavy weights **squash the base letter** of
+   stacked-diacritic chars (`ộ ệ ề ự ễ`): the `o`/`e` shrinks to fit the two stacked marks inside the
+   thick glyph (very visible on macOS). Use `font-weight:bold` (700), never `800`/`900`.
+   (c) Heading `line-height ≥ 1.3` (room for the double diacritics).
+   (d) Web-safe stack set inline on every text element — prefer `"Helvetica Neue", Helvetica, Arial,
+   sans-serif` or `Georgia, "Times New Roman", serif`.
 
 ## Token convention (compatible with existing pipeline)
 

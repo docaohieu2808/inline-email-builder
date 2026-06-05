@@ -22,10 +22,11 @@ If the brand provides colors, use those; the table is only a fallback.
 - Friendly / extra-safe Vietnamese: `Tahoma, Verdana, sans-serif`
 Set the stack inline on **every** text element (not just the wrapper — see `email-html-rules.md`).
 
-**Vietnamese diacritics — IMPORTANT:** lead the sans stack with **"Helvetica Neue", Helvetica**
-(or **Tahoma**), NOT `Arial` first. On some systems (esp. macOS) Arial renders stacked-diacritic
-chars like `ộ ệ ề ự ễ` with the **base letter shrunk/squashed**; Helvetica Neue / Tahoma draw them
-correctly. Also give headings `line-height ≥ 1.3` so the double diacritics have vertical room.
+**Vietnamese diacritics — IMPORTANT:** the base letter of stacked-diacritic chars (`ộ ệ ề ự ễ`)
+gets **squashed by heavy font-weights** — cap at `font-weight:bold` (700), **NEVER 800/900** (the
+heavy glyph shrinks the `o`/`e` to fit the two stacked marks; very visible on macOS). Give headings
+`line-height ≥ 1.3` for vertical room. Any web-safe stack works; `"Helvetica Neue", Helvetica,
+Arial, sans-serif` is a clean default.
 
 Keep `[content]` HTML inline-styled too (e.g. `<p style='margin:0 0 12px 0;'>...</p>`).
 
