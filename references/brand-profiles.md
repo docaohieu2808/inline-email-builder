@@ -30,11 +30,13 @@ Any field may be omitted → it stays a `[token]`. Token mapping: `name→[name]
 `colors.text→[color_text]`, `colors.bg_page→[bg_page]`, `colors.bg_card→[bg_card]`.
 
 ## How the skill uses it
-1. The brief names a brand (e.g. "email cho **Bloom Nails**…"). Slugify → `bloom-nails`.
-2. If `brand-profiles/bloom-nails.json` exists, load it and **pre-fill** those tokens; the brand's
-   colors seed the theme. Only the per-email parts (occasion, copy, purchased image) are new.
-3. If no profile exists, proceed normally (auto-gen / leave tokens) and optionally offer to save
-   one for next time.
+Nothing is hardcoded — profiles are discovered at runtime, any slug works.
+1. The brief names a brand. Run `scripts/brand_profile.py list` to see the actual saved profiles
+   and pick the one matching that brand (slug = brand name lowercased, spaces → hyphens; e.g.
+   "Bloom Nails" → `bloom-nails`, "Tiệm Nail ABC" → `tiem-nail-abc`).
+2. If a match exists, load it (`show <slug>`) and **pre-fill** those tokens; the brand's colors
+   seed the theme. Only the per-email parts (occasion, copy, purchased image) are new.
+3. If no match, proceed normally (auto-gen / leave tokens) and offer to save a profile for next time.
 
 ## Managing profiles (helper script)
 ```bash
