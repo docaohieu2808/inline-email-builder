@@ -1,10 +1,10 @@
 ---
 name: inline-email-builder
-description: Build email HTML templates as inline-CSS fragments (no <style>/<head>/<html>, fluid responsive without media queries). Use when asked to create a marketing/transactional email template from a natural-language brief — title, logo, body content, social links, optional banner — for any industry (nails/salon, retail, etc.). Output is a paste-ready fragment compatible with merge-token pipelines.
+description: Create marketing/transactional email templates as inline-CSS HTML fragments — no <style>/<head>/<html>, fluid responsive, paste-ready for any email platform. Use when asked to make or design an email template, for any industry.
 license: MIT
 metadata:
   author: hieudc
-  version: "0.12.0"
+  version: "0.12.1"
 ---
 
 # Inline Email Builder
