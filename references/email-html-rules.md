@@ -64,10 +64,9 @@ and `box-shadow` and may render full-width — acceptable per the existing templ
 strict Outlook-desktop parity is ever required, that needs table-based layout + VML (out of scope
 for v0.1; raise it before adding).
 
-## Image API integration (stub — wire when endpoint is known)
-The user has a licensed-stock site with an API. To auto-source images, add a script that:
-1. Takes a query (industry/theme keywords) + size.
-2. Calls the API (needs: base URL, auth header/key, response shape).
-3. Returns an absolute hosted URL to drop into `src`.
-Until wired, ask the user for image URLs or leave `[logo]`/`[banner]` tokens and list them under
-"images needed" in the output.
+## Images are purchased manually — do NOT automate
+The licensed-stock images are **bought per-image** (each priced separately). The skill must
+never auto-fetch, auto-buy, auto-generate, or hot-link images, and never invents an image URL.
+For every image, leave its `[token]` and emit a buying spec (slot · placement · recommended px +
+aspect · suggested subject) so the user purchases the right asset once and pastes its hosted
+https URL. Only use an image URL the user explicitly provides.

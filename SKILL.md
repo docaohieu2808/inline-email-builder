@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.3.0"
+  version: "0.3.1"
 ---
 
 # Inline Email Builder
@@ -76,8 +76,13 @@ them, otherwise LEAVE the token for their merge system:
    ```bash
    cd <this-skill-directory> && python3 scripts/validate_email.py <output.html>
    ```
-7. **Return** the final fragment in a fenced ```html block, then a short list of
-   "tokens left to fill" and "images needed".
+7. **Return** the final fragment in a fenced ```html block, then:
+   - **Image spec sheet** — images are PURCHASED per-image by the user, so NEVER auto-fetch,
+     auto-generate, or invent image URLs. Instead, for every image slot leave its `[token]`
+     and output a buying spec so she purchases the right asset once: `token · where it's used
+     · recommended size (px) + aspect ratio · suggested subject/keywords`. Example:
+     `[banner] · top hero · 1280×440 (≈3:1), display 640 wide · "spring pastel nails, soft light"`.
+   - **Tokens left to fill** — the remaining `[link]`/text tokens she must paste real values into.
 
 ## Quality upgrades over legacy templates
 
@@ -88,11 +93,13 @@ them, otherwise LEAVE the token for their merge system:
   blocks instead.
 - Bulletproof CTA = padded `<a>` with inline background (no image-only buttons).
 
-## Image sourcing (licensed stock API)
+## Image sourcing — manual, never automated
 
-The user has a licensed-stock site **with an API**. v0.1 expects image URLs to be provided
-or left as tokens. To auto-fetch, wire the API in `scripts/` (needs endpoint + auth) — see
-the "Image API integration" stub in `references/email-html-rules.md`.
+Images are **bought per-image** (each has its own price) from the user's licensed-stock site.
+So the skill **never** auto-fetches, auto-generates, hot-links, or invents an image URL — that
+would cost money and/or break licensing. Always leave the image `[token]` and emit the buying
+spec (see workflow step 7) so she purchases the right asset and pastes its hosted https URL.
+The only images the skill may use directly are ones the user explicitly provides in the brief.
 
 ## Scaling later (not yet — YAGNI)
 
