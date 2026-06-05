@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.14.4"
+  version: "0.15.0"
 ---
 
 # Inline Email Builder
@@ -77,8 +77,10 @@ mobile-friendly. Example brief:
 
 Reuse the bracket tokens the team already uses; fill concrete values when the brief gives
 them, otherwise LEAVE the token for their merge system:
-`[logo] [title] [content] [domain] [banner] [facebook] [instagram] [tiktok] [youtube]
+`[logo] [title] [content] [domain] [banner] [bg_image] [facebook] [instagram] [tiktok] [youtube]
 [cta_text] [cta_url] [contact] [name] [unsubscribe]`
+(`[bg_image]` = optional CSS background image on a card/section — always with a `background-color`
+fallback; see "Background images" in `references/email-html-rules.md`.)
 
 ## Workflow
 
@@ -126,8 +128,9 @@ them, otherwise LEAVE the token for their merge system:
 - Real `alt` text on every image (legacy templates often had none / mislabeled icons).
 - Name social tokens by the actual network (`[facebook]`, `[instagram]` — not a generic
   `[twitter]` pointing at a Yelp icon).
-- Avoid fragile spacing hacks (e.g. hard-coded `margin-bottom:230px`); use padding inside
-  blocks instead.
+- Prefer padding inside blocks over arbitrary hard-coded margins for spacing — **except** a
+  deliberate large offset to clear a **background image's** decorative zone (that's intentional and
+  tied to the image, not a stray hack; see "Background images" in `email-html-rules.md`).
 - Bulletproof CTA = padded `<a>` with inline background (no image-only buttons).
 
 ## Logo, images, links = the coder's job (not ours)

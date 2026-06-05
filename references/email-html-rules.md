@@ -38,6 +38,22 @@ Verified: renders side-by-side at 700px and stacked at 380px with zero media que
 - Don't put critical text inside images (clients block images by default → blank email).
 - The images themselves are the user's — see "Images are entirely the user's" below.
 
+## 4b. Background images (optional — her real templates use them)
+A decorative card/section background via CSS is supported in modern clients (Gmail, Apple Mail, iOS):
+`background:url('[bg_image]') top center no-repeat;` (optionally `background-size:cover;`).
+- **ALWAYS pair it with a solid `background-color` fallback on the same element.** Outlook desktop
+  (Word engine) ignores CSS background images, and Gmail blocks images until the user loads them —
+  the fallback colour is what shows there, and any overlaid text must stay readable on it.
+- **Keep the image a `[token]`** (e.g. `[bg_image]`) — it's the user's asset, `https://` only.
+- **Don't rely on a bg image for text legibility.** If contrast over the image is risky, put the text
+  on a solid inner box (as her sample does: artwork on the outer card, white inner box for `[content]`).
+- A bg image with a **decorative top zone** needs the content pushed below it — use top padding or a
+  spacer (her legacy template uses a large `margin-bottom` on the logo block to clear the artwork).
+  That offset is **intentional and tied to the specific image** — adjust it to the image, don't treat
+  it as a stray hack.
+- Pixel-perfect bg images in Outlook desktop need VML (`<v:rect>`/`<v:fill>`) — out of scope for
+  inline-only; the fallback colour is the accepted Outlook behaviour.
+
 ## 5. Markup hygiene
 - Single-quote attributes (`style='...'`) to match the existing templates.
 - Use entities: `&copy;`, `&amp;`, `&nbsp;`.
