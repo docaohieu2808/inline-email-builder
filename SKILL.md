@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.5.1"
+  version: "0.6.0"
 ---
 
 # Inline Email Builder
@@ -23,26 +23,20 @@ inline-only CSS, fluid responsiveness, token contract) so they stay consistent. 
 
 ## Who you're talking to (CRITICAL — read first)
 
-The end user is a **designer who does NOT use the command line** and writes requests **in
-Vietnamese**. The scripts in this skill are tools for **YOU**, never for her. So:
+The end user is a **Vietnamese-speaking front-end coder**. She wants ONE thing fast: **beautiful,
+correct email code**. She fills the client-specific bits (logo, links, images) herself in her
+editor — that's trivial for her, and it keeps client data OFF the agent.
 
-- **Reply in Vietnamese**, simple, no jargon.
-- **NEVER tell her to run a command, edit a file, or paste JSON.** YOU run every script
-  (`brand_profile.py`, `validate_email.py`) and read/write every file yourself, on her behalf.
-- **Brand profiles are OPTIONAL — only worth it for REPEAT clients.** Always use whatever brand
-  details she gives for THIS email directly, saved or not. Save a `brand-profiles/<slug>.json`
-  ONLY when the client recurs or she asks ("lưu khách này lại") — **never auto-save one-off
-  brands** (pointless clutter). If every email is a different brand, just use the info inline and
-  skip saving entirely. When she names a client that HAS a profile, find it (run
-  `brand_profile.py list`) and load it. Confirm in Vietnamese ("Dùng thông tin khách X nha").
-  After a new brand's email, you may offer once: "Khách này có làm lại không, mình lưu nha?"
-- **Images:** tell her in plain Vietnamese what to buy (the spec). When she pastes an image URL,
-  YOU insert it into the right slot — never ask her to find a token in the HTML.
-- **Output:** run validation silently; surface problems only in plain language. Save the finished
-  email to a file and tell her the filename (and offer to show it), so she can copy it into her
-  sending system.
-- The only things she does outside chat: open the agent, buy images on the stock site, and paste
-  the final HTML into her email tool. Everything mechanical is on YOU.
+- **Reply in Vietnamese**, concise.
+- **Your job = the design + code.** Produce a beautiful, rules-compliant, responsive inline-CSS
+  fragment with clear `[placeholder]` tokens for everything client-specific.
+- **Do NOT ask for, store, or insert real client data** (logo URLs, client links, real images).
+  Leave them as `[tokens]`. Privacy: client info should never need to reach the agent. (If she
+  volunteers a URL, you may use it — but never request it, and never persist client data.)
+- After the code, give: an **image-buy spec** (what to purchase + size) and a short **"fill these"
+  list** of the placeholders she'll replace in her editor.
+- Run `scripts/validate_email.py` yourself; fix errors silently; surface issues only in plain
+  Vietnamese. Optionally offer to save the code to a `.html` file.
 
 ## When to use
 
@@ -73,13 +67,11 @@ them, otherwise LEAVE the token for their merge system:
 
 ## Workflow
 
-1. **Parse brief** → the user fills the form in `references/brief-input-template.md`
-   (industry, occasion, brand, style, layout, content, images, links, tone/language).
-   **If the brief names a brand that has a saved profile, load it first** (see "Brand profiles"
-   below) to pre-fill logo/colors/social/contact/links — only the per-email parts are new.
-   **Any other field left blank → auto-generate a value that fits the rest of the brief**; never
-   block on optional fields. Images/links not provided stay as `[tokens]` and go into the
-   final "still needed" list. Only ask the user if the brief is essentially empty.
+1. **Parse brief** → from her Vietnamese request (industry, occasion, style, content; the form in
+   `references/brief-input-template.md` is optional). **Any field she doesn't specify →
+   auto-generate a value that fits**; never block on optional fields. **All client-specific data
+   (logo, links, images) stays as `[tokens]`** for her to fill in her editor — do not ask for it.
+   Only ask if the brief is essentially empty.
 2. **Theme + visual style** → pick a 2–3 color palette + web-safe font fitting the industry
    (contrast ≥ 4.5:1, see `references/theming-guide.md`) AND a look — modern minimal, bold
    dark, editorial, duotone, bento… see `references/modern-style.md`. Style is a separate dial
@@ -118,20 +110,11 @@ them, otherwise LEAVE the token for their merge system:
   blocks instead.
 - Bulletproof CTA = padded `<a>` with inline background (no image-only buttons).
 
-## Brand profiles (reuse per-client constants)
+## Client data stays with the coder (privacy)
 
-A client's constants (logo, colors, social, contact, unsubscribe) repeat across every email —
-save them once per brand instead of re-typing. Supports many brands (one file each). See
-`references/brand-profiles.md`. Real profiles live in `brand-profiles/<slug>.json` and are
-**gitignored** (never pushed — they hold client URLs); only `EXAMPLE.json` ships.
-
-```bash
-cd <this-skill-directory>
-python3 scripts/brand_profile.py new <slug>     # scaffold, then edit with real values
-python3 scripts/brand_profile.py apply <slug> out.html   # fill brand [tokens] in a fragment
-```
-When the brief names a brand with a profile, pre-fill its tokens and seed the theme from its
-colors. Profiles never hold purchased images or per-email copy.
+Logo, real links, and purchased images are **filled by the coder in her editor**, not by the
+agent. Always leave them as `[tokens]` and never request or store them — client info should not
+need to reach the agent. The agent's deliverable is the design + code; she does the last-mile fill.
 
 ## Image sourcing — manual, never automated
 
