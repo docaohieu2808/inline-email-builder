@@ -66,9 +66,7 @@ and `box-shadow` and may render full-width — acceptable per the existing templ
 strict Outlook-desktop parity is ever required, that needs table-based layout + VML (out of scope
 for v0.1; raise it before adding).
 
-## Images are purchased manually — do NOT automate
-The licensed-stock images are **bought per-image** (each priced separately). The skill must
-never auto-fetch, auto-buy, auto-generate, or hot-link images, and never invents an image URL.
-For every image, leave its `[token]` and emit a buying spec (slot · placement · recommended px +
-aspect · suggested subject) so the user purchases the right asset once and pastes its hosted
-https URL. Only use an image URL the user explicitly provides.
+## Images are entirely the user's — do NOT automate or spec
+The skill never auto-fetches, generates, hot-links, optimizes, sizes, specs, or invents an image
+URL. For every image just leave its `[token]` (with correct responsive `<img>` styling). The user
+sources, optimizes, and fills the real image herself. Only use an image URL she explicitly provides.

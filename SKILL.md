@@ -91,7 +91,7 @@ them, otherwise LEAVE the token for their merge system:
    `references/email-html-rules.md`).
 4. **Write copy** for `[title]` + `[content]` in the requested tone/language.
 5. **Fill** inline styles with the theme. Only insert image URLs the user **explicitly
-   provided**; otherwise leave the image `[token]` (images are bought manually — see step 7).
+   provided**; otherwise leave the image `[token]` — image sourcing/sizing is hers.
 6. **Validate** — run the linter and fix every ERROR before returning. Run it from THIS
    skill's own directory (works wherever the skill is installed — `.codex/skills/`,
    `.claude/skills/`, etc.):
