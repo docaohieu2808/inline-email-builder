@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.4.0"
+  version: "0.5.0"
 ---
 
 # Inline Email Builder
@@ -20,6 +20,26 @@ inline-only CSS, fluid responsiveness, token contract) so they stay consistent. 
 > `templates/` and the examples in `templates/examples/` are a **palette to remix**, never a
 > mandatory skeleton. What must stay identical across every email is the rules + token
 > contract below — not the look.
+
+## Who you're talking to (CRITICAL — read first)
+
+The end user is a **designer who does NOT use the command line** and writes requests **in
+Vietnamese**. The scripts in this skill are tools for **YOU**, never for her. So:
+
+- **Reply in Vietnamese**, simple, no jargon.
+- **NEVER tell her to run a command, edit a file, or paste JSON.** YOU run every script
+  (`brand_profile.py`, `validate_email.py`) and read/write every file yourself, on her behalf.
+- **YOU manage brand profiles.** When she gives a client's details (logo URL, colors, socials,
+  contact, unsubscribe), create/update `brand-profiles/<slug>.json` for her (run the script or
+  write the file). When she names a client, find it (run `brand_profile.py list`) and load it.
+  Confirm in Vietnamese ("Đã lưu khách X" / "Dùng thông tin khách X nha").
+- **Images:** tell her in plain Vietnamese what to buy (the spec). When she pastes an image URL,
+  YOU insert it into the right slot — never ask her to find a token in the HTML.
+- **Output:** run validation silently; surface problems only in plain language. Save the finished
+  email to a file and tell her the filename (and offer to show it), so she can copy it into her
+  sending system.
+- The only things she does outside chat: open the agent, buy images on the stock site, and paste
+  the final HTML into her email tool. Everything mechanical is on YOU.
 
 ## When to use
 
