@@ -8,7 +8,8 @@ adapt to the style (luxe = hairline dividers + serif; bright = bolder boxes).
 ## A. Style directions (the overall look)
 Minimal · Dark · Luxe · Editorial · Duotone · Bento · Bright · Classic. What makes it modern:
 - **Whitespace** — generous section padding (24–40px); crowded = dated.
-- **Big tight headlines** — 28–42px, bold, line-height ~1.2, slight negative letter-spacing.
+- **Big tight headlines** — 28–42px, bold, slight negative letter-spacing. Keep `line-height ≥ 1.3`
+  (Vietnamese stacked diacritics need room; never < 1.2 or they clip/overlap).
 - **Restraint** — ONE accent colour, the rest neutral; avoid rainbow + heavy shadows.
 - **Rounded** — `border-radius` on cards/images/buttons (pill `999px`) for modern; sharper for classic/editorial.
 - **Narrow column** — `max-width:520–600px` reads more premium than 640.

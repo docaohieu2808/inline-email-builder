@@ -17,10 +17,15 @@ tokens. Keep it restrained — 2–3 colors. Verify contrast ≥ 4.5:1 for text.
 If the brand provides colors, use those; the table is only a fallback.
 
 ## Fonts (web-safe stacks — no web fonts, they need `<style>`)
-- Clean/modern: `Arial, Helvetica, sans-serif`
-- Warm/editorial: `Georgia, 'Times New Roman', serif`
-- Friendly: `Verdana, Geneva, sans-serif`
-Pick ONE and apply on the outer wrapper (inherited inline by children).
+- Clean/modern: `"Helvetica Neue", Helvetica, Arial, sans-serif`
+- Warm/editorial: `Georgia, "Times New Roman", serif`
+- Friendly / extra-safe Vietnamese: `Tahoma, Verdana, sans-serif`
+Set the stack inline on **every** text element (not just the wrapper — see `email-html-rules.md`).
+
+**Vietnamese diacritics — IMPORTANT:** lead the sans stack with **"Helvetica Neue", Helvetica**
+(or **Tahoma**), NOT `Arial` first. On some systems (esp. macOS) Arial renders stacked-diacritic
+chars like `ộ ệ ề ự ễ` with the **base letter shrunk/squashed**; Helvetica Neue / Tahoma draw them
+correctly. Also give headings `line-height ≥ 1.3` so the double diacritics have vertical room.
 
 Keep `[content]` HTML inline-styled too (e.g. `<p style='margin:0 0 12px 0;'>...</p>`).
 
