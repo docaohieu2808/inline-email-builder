@@ -71,7 +71,7 @@ liệt kê ảnh cần (logo, 1 hero). Validate sạch trước khi trả.
 ## AI fill rules (when a field is blank)
 - **Industry/occasion blank** → ask once if totally empty; otherwise infer from any given field.
 - **Title/content blank** → write copy fitting industry + occasion + tone + language.
-- **Style/layout blank** → choose a fresh combo per `modern-style.md` + `layout-patterns.md`;
+- **Style/layout blank** → choose a fresh combo per `design-guidelines.md` + `layout-patterns.md`;
   don't repeat the last design.
 - **Colors/font blank** → pick per `theming-guide.md`.
 - **Images/logo/links blank** → leave the matching `[token]`; collect them into a final

@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.9.0"
+  version: "0.10.0"
 ---
 
 # Inline Email Builder
@@ -80,14 +80,16 @@ them, otherwise LEAVE the token for their merge system:
 2. **Theme + visual style** → harmonize a 2–3 colour palette with the **brand's stated colour**
    (it's given — don't invent one) + a web-safe font fitting the industry (contrast ≥ 4.5:1, see
    `references/theming-guide.md`), and pick a look — modern minimal, dark, editorial, duotone,
-   bento… see `references/modern-style.md`. Style is a separate dial from layout; vary it per brief.
+   bento… see `references/design-guidelines.md`. Style is a separate dial from layout; vary per brief.
 3. **Choose a fresh layout for THIS brief** — pick an archetype from
    `references/layout-patterns.md` (or compose a new one) that fits the occasion; don't default
    to the same structure every time. Remix the concrete designs in `templates/examples/*` —
    reference starting points, not a required skeleton. For "image + text" sections that sit
    side-by-side on desktop and stack on mobile, use `templates/blocks/media-row.html` (fluid
    inline-block, no media query, no Bootstrap — see "Multi-column" in `references/email-html-rules.md`).
-4. **Write copy** for `[title]` + `[content]` in the requested tone/language.
+4. **Write copy** for `[title]` + `[content]` in the requested tone/language, following the
+   typography & content-formatting rules in `references/design-guidelines.md` (headline with no
+   full stop, benefits as a `✓` list, promo/code in a tinted box, CTA label with no full stop…).
 5. **Fill** inline styles with concrete theme colours (real hex, harmonized with the brand
    colour). Leave every image as its `[token]` unless the user explicitly provided a URL.
 6. **Validate** — run the linter and fix every ERROR before returning. Run it from THIS

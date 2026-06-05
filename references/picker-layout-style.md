@@ -15,7 +15,7 @@ nào", show bảng này.
 | 6 | Xác nhận / biên nhận | đặt lịch, đơn hàng, chi tiết | F |
 | 7 | Thư đơn giản | chỉ chữ, cá nhân, mời quay lại | G |
 
-## 🎨 STYLE (phong cách) — details in `modern-style.md`
+## 🎨 STYLE (phong cách) — details in `design-guidelines.md`
 | # | Tên | Cảm giác |
 |---|---|---|
 | 1 | Tối giản hiện đại | trắng nhiều, chữ lớn, pill button — sạch |
