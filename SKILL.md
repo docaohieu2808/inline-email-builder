@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.5.0"
+  version: "0.5.1"
 ---
 
 # Inline Email Builder
@@ -29,10 +29,13 @@ Vietnamese**. The scripts in this skill are tools for **YOU**, never for her. So
 - **Reply in Vietnamese**, simple, no jargon.
 - **NEVER tell her to run a command, edit a file, or paste JSON.** YOU run every script
   (`brand_profile.py`, `validate_email.py`) and read/write every file yourself, on her behalf.
-- **YOU manage brand profiles.** When she gives a client's details (logo URL, colors, socials,
-  contact, unsubscribe), create/update `brand-profiles/<slug>.json` for her (run the script or
-  write the file). When she names a client, find it (run `brand_profile.py list`) and load it.
-  Confirm in Vietnamese ("Đã lưu khách X" / "Dùng thông tin khách X nha").
+- **Brand profiles are OPTIONAL — only worth it for REPEAT clients.** Always use whatever brand
+  details she gives for THIS email directly, saved or not. Save a `brand-profiles/<slug>.json`
+  ONLY when the client recurs or she asks ("lưu khách này lại") — **never auto-save one-off
+  brands** (pointless clutter). If every email is a different brand, just use the info inline and
+  skip saving entirely. When she names a client that HAS a profile, find it (run
+  `brand_profile.py list`) and load it. Confirm in Vietnamese ("Dùng thông tin khách X nha").
+  After a new brand's email, you may offer once: "Khách này có làm lại không, mình lưu nha?"
 - **Images:** tell her in plain Vietnamese what to buy (the spec). When she pastes an image URL,
   YOU insert it into the right slot — never ask her to find a token in the HTML.
 - **Output:** run validation silently; surface problems only in plain language. Save the finished

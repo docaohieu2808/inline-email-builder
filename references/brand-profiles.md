@@ -4,6 +4,12 @@ A brand profile saves the things that **never change for a client** — logo, co
 links, contact, website, unsubscribe URL — so they aren't re-typed every email. Built to hold
 **many profiles** (one per client); a single-brand user just keeps one.
 
+## When to use — and when to SKIP
+Profiles only pay off when a **client recurs** (reused across several emails). If **every email is
+a different one-off brand**, a profile is saved once and never reused → pure overhead. In that
+case **skip saving** entirely: just take the brand details inline in that one request and use them.
+Saving is opt-in (the user asks, or the client is clearly recurring) — never auto-save one-offs.
+
 ## Where they live (privacy)
 `brand-profiles/<slug>.json` next to this skill. **Real profiles are gitignored** — they hold a
 client's URLs, never committed/pushed. Only `brand-profiles/EXAMPLE.json` ships as a template.
