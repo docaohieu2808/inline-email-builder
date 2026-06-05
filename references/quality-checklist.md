@@ -26,6 +26,7 @@ judgment must — is it complete, clear, and good? Fix anything that fails, then
 - [ ] Every `<img>` has a meaningful `alt`.
 - [ ] Reads fine narrow (≤ 400px) — single column / rows stack.
 - [ ] Multi-column rows (stats / cards / grid) fit cleanly 3-up or 2-up on desktop — **no 2+1 orphan**.
+- [ ] Side-by-side cards are a **matched pair** — parallel content (not list-vs-paragraph) + `min-height`, so boxes are ~equal height, not lopsided.
 - [ ] **`font-family` is set on every text element** (h1/p/a/div), not only the wrapper — else Outlook falls back to Times.
 
 If anything is off, fix and re-check — then return the fragment + the "fill these" list.
