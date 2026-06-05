@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.10.0"
+  version: "0.11.0"
 ---
 
 # Inline Email Builder
@@ -88,13 +88,16 @@ them, otherwise LEAVE the token for their merge system:
    side-by-side on desktop and stack on mobile, use `templates/blocks/media-row.html` (fluid
    inline-block, no media query, no Bootstrap — see "Multi-column" in `references/email-html-rules.md`).
 4. **Write copy** for `[title]` + `[content]` in the requested tone/language, following the
-   typography & content-formatting rules in `references/design-guidelines.md` (headline with no
-   full stop, benefits as a `✓` list, promo/code in a tinted box, CTA label with no full stop…).
+   **format** rules in `references/design-guidelines.md` (headline no full stop, benefits as a `✓`
+   list, promo/code in a tinted box…) AND the **messaging** rules in
+   `references/copywriting-rules.md` (one clear-benefit headline, ONE action-verb CTA, scannable
+   benefits, tone per industry).
 5. **Fill** inline styles with concrete theme colours (real hex, harmonized with the brand
    colour). Leave every image as its `[token]` unless the user explicitly provided a URL.
-6. **Validate** — run the linter and fix every ERROR before returning. Run it from THIS
-   skill's own directory (works wherever the skill is installed — `.codex/skills/`,
-   `.claude/skills/`, etc.):
+6. **Validate & self-review** — run the linter (fix every ERROR), then self-review against
+   `references/quality-checklist.md` (preview text, one clear CTA, unsubscribe, not too long, CTA
+   contrast, tone…). Run the linter from THIS skill's own directory (works wherever installed —
+   `.codex/skills/`, `.claude/skills/`, etc.):
    ```bash
    cd <this-skill-directory> && python3 scripts/validate_email.py <output.html>
    ```

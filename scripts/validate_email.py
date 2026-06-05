@@ -73,7 +73,11 @@ def check(html: str):
     if "[unsubscribe]" not in scan and "unsubscribe" not in scan.lower():
         warns.append("no unsubscribe link found (required for marketing email)")
 
-    # 7. Size hint.
+    # 7. Preview text (preheader) — a hidden teaser div improves inbox preview.
+    if not re.search(r"display\s*:\s*none", scan, re.IGNORECASE):
+        warns.append("no hidden preview text (preheader) — add a display:none teaser div near the top")
+
+    # 8. Size hint.
     kb = len(html.encode("utf-8")) / 1024
     if kb > 100:
         warns.append(f"fragment is {kb:.0f} KB — Gmail clips >102 KB; trim if close")

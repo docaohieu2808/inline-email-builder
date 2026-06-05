@@ -22,13 +22,7 @@ If the brand provides colors, use those; the table is only a fallback.
 - Friendly: `Verdana, Geneva, sans-serif`
 Pick ONE and apply on the outer wrapper (inherited inline by children).
 
-## Copy tone
-- Match language of the brief (Vietnamese ↔ English).
-- Headline: short, benefit/occasion-led (e.g. "Happy Birthday — a treat just for you 💅").
-- Body: 2–4 short sentences or a few bullet lines; one clear ask.
-- Keep `[content]` HTML inline-styled too (e.g. `<p style='margin:0 0 12px 0;'>...</p>`).
+Keep `[content]` HTML inline-styled too (e.g. `<p style='margin:0 0 12px 0;'>...</p>`).
 
-## Sanity checks before returning
-- Heading color readable on `[bg_card]`? CTA text readable on `[color_accent]`?
-- No more than ~3 distinct hues. Dark mode: avoid pure-black text on transparent; the white
-  card keeps it safe.
+> Copy / messaging rules → `copywriting-rules.md`. Pre-output contrast & quality review →
+> `quality-checklist.md`.
