@@ -19,7 +19,8 @@ Minimal · Dark · Luxe · Editorial · Duotone · Bento · Bright · Classic. W
 
 ## B. Typography rules
 - **Headline** — short, **NO full stop** at the end.
-- **Body paragraphs** — complete sentences **with** full stops; 15–16px, line-height 1.6–1.8.
+- **Body paragraphs** — complete sentences **with** full stops; 15–16px, **line-height 1.5–1.6**
+  (NOT 1.7+ — that reads loose/airy). Heading line-height 1.3 (VN-safe min).
 - **Bullets** — short, **< ~12 words** each, usually no full stop.
 - **CTA label** — an action phrase, **no full stop** ("Book now", "Nhận ưu đãi 20%").
 - **Eyebrow/label** — UPPERCASE, letter-spacing 2–3px, small (11–13px), accent colour, above the headline.
@@ -53,6 +54,10 @@ Minimal · Dark · Luxe · Editorial · Duotone · Bento · Bright · Classic. W
   full-width banner (unless the style is "bright").
 - One accent colour does the heavy lifting; keep everything else neutral.
 - Let it breathe — spacing over borders; only add a border/shadow when it earns its place.
+- **Consistent vertical rhythm.** Keep the gaps between sections roughly EQUAL (~24–28px). Don't pile
+  a big top padding on one block AND a big bottom padding on the next — they compound into an uneven,
+  airy gap. Cleanest pattern: each section gets a consistent top padding and `padding-bottom:0`, so the
+  next section's top padding alone sets the gap. Body line-height 1.5–1.6, not 1.8.
 - **Keep it TIGHT.** A typical email = logo → hero/headline → 1–3 sections → offer → CTA → footer.
   Don't cram every possible block (header-row + intro + banner + grid + cards + …). Restraint reads
   premium; a long busy email reads cheap. If a section doesn't earn its place, cut it.
