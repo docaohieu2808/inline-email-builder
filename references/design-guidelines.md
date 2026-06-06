@@ -47,7 +47,7 @@ Conventions, not a fixed look — adapt to the Style. **Never ship bare flat box
 | Service / product card | framed image card + bold title + 1-line desc (+ price badge) | `[image_N] [image_N_caption]` |
 | Offer box (no code) | **SOLID** pastel-of-accent box, label + big offer, centred | `[offer]` |
 | Coupon-code box | **DASHED** / cut-out border (only for a real code) | `[coupon]` |
-| CTA button | ONE big padded `<a>`, solid accent bg + white text, rounded; never an image | `[cta_text]`→`[cta_url]` |
+| CTA button | **OFF by default** — code.txt has none; the offer/coupon is the action. Add ONLY if she asks (then: big padded `<a>`, solid accent bg, rounded) | `[cta_text]`→`[cta_url]` (if asked) |
 | Benefit list | `✓` accent icons + short lines | `[benefit_N]` |
 | Testimonial | tinted quote box | `[testimonial] [author]` |
 | Badge / pill | small rounded tinted label | `[badge]` |

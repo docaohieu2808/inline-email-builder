@@ -13,8 +13,9 @@ Run AFTER `validate_email.py` passes. The validator catches mechanical errors; t
 ## Design (per Email Template Design Guidelines)
 - [ ] **Not a bare flat box** — card has radius + shadow; design applied (gradient/band/badge/divider).
 - [ ] **Every image is FRAMED** (border + mat + radius + shadow + caption) — no bare `<img>` in the body.
-- [ ] Components designed where they fit (offer box, CTA button, tick list) — text in them = TOKENS.
+- [ ] Components designed where they fit (offer box, tick list, badge) — text in them = TOKENS.
 - [ ] **Dashed border ONLY on a coupon-code box**; plain % offer = SOLID tinted box.
+- [ ] **No CTA button** unless she explicitly asked (code.txt has none; offer/coupon is the action).
 
 ## Visual / technical
 - [ ] `[title]`/`[content]` containers styled (font-family, size, line-height) so her pasted text

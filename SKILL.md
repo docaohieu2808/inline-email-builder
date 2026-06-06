@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.19.0"
+  version: "0.19.1"
 ---
 
 # Inline Email Builder
@@ -30,9 +30,11 @@ editor — that's trivial for her, and it keeps client data OFF the agent.
 - **Your job = the DESIGN, NOT the words.** Assemble a varied layout (logo position · `[banner]` ·
   image block · footer) AND **design the components** per the **Email Template Design Guidelines**
   (`references/design-guidelines.md`): **frame every image** (card = border + mat + shadow + caption —
-  NEVER a bare `<img>`), offer boxes, CTA buttons, tick lists, badges, dividers, gradients/rounded.
-  **All TEXT is a TOKEN** (`[title] [content] [offer] [cta_text] [benefit_N] [image_N_caption]…`) — you
+  NEVER a bare `<img>`), offer / coupon boxes, tick lists, badges, dividers, gradients/rounded.
+  **All TEXT is a TOKEN** (`[title] [content] [offer] [coupon] [benefit_N] [image_N_caption]…`) — you
   design the boxes, you NEVER write the words. **Never ship bare flat boxes — design it.**
+  **No auto CTA button** — her `code.txt` style has none; the offer/coupon is the focal action. Add a
+  button only if she explicitly asks.
 - **Recommend Layout + Style — don't make her choose blind.** Brand industry + colors are GIVEN
   context (never ask her to pick "by color/industry"). From this email's **occasion + campaign**,
   proactively suggest a fitting Layout + Style with a one-line reason (see
@@ -92,9 +94,10 @@ mobile-friendly. Example brief:
 Reuse the bracket tokens the team already uses; fill concrete values when the brief gives
 them, otherwise LEAVE the token for their merge system:
 `[logo] [title] [content] [domain] [banner] [image_1..4] [image_N_alt] [image_N_caption] [bg_image]
-[eyebrow] [offer] [offer_label] [coupon] [cta_text] [cta_url] [benefit_1..n] [testimonial] [author]
+[eyebrow] [offer] [offer_label] [coupon] [benefit_1..n] [testimonial] [author]
 [badge] [divider_*] [icon_*] [facebook] [instagram] [youtube] [tiktok] [contact] [name] [unsubscribe]`
-(Component tokens — `[offer]`, `[cta_text]`, `[benefit_N]`, `[image_N_caption]`, `[testimonial]`… —
+(No CTA-button tokens by default — code.txt has no button; add `[cta_text]`/`[cta_url]` only if she asks.
+Component tokens — `[offer]`, `[coupon]`, `[benefit_N]`, `[image_N_caption]`, `[testimonial]`… —
 are the **text slots inside the designed components** (see `design-guidelines.md` §4). The skill
 designs the box; she fills the token. `[icon_*]` = social icon images; `[divider_*]` = a designed
 wave/curve divider image; `[bg_image]` = CSS background — always with a `background-color` fallback.)
@@ -119,7 +122,8 @@ wave/curve divider image; `[bg_image]` = CSS background — always with a `backg
 4. **Apply the Email Template Design Guidelines** (`references/design-guidelines.md`) — **DESIGN the
    components** that fit the occasion: **frame every image** (card = border + mat + shadow + caption;
    `templates/blocks/image-card-frame.html` — never a bare `<img>`), offer box (SOLID pastel = %, DASHED
-   = code), big CTA button, tick benefit list, badges, dividers, gradients/rounded corners. **The TEXT
+   = code), tick benefit list, badges, dividers, gradients/rounded corners (**no CTA button unless she
+   asks** — the offer/coupon is the focal action). **The TEXT
    in each is a TOKEN** (`[title] [content] [offer] [cta_text] [benefit_N] [image_N_caption]…`) — you
    design the box, you NEVER write the words. **Don't ship bare flat boxes.**
 5. **Fill** inline styles with concrete theme colours (real hex, harmonized with the brand

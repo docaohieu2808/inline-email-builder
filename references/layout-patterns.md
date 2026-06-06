@@ -35,8 +35,9 @@ adjacent — see "Multi-column" in `email-html-rules.md`). Concrete blocks in `t
 (Compose new ones freely — 3-across, image+text row… — same fluid technique, same framed cards.)
 
 ## 3b. Content components (design per the occasion — see `design-guidelines.md` §4)
-`offer-box.html` (SOLID % / DASHED code) · `cta-button.html` (big accent button) ·
-`benefit-tick-list.html` (`✓` + `[benefit_N]`) · badge/pill · testimonial box. Text = tokens.
+`offer-box.html` (SOLID % / DASHED code) · `benefit-tick-list.html` (`✓` + `[benefit_N]`) ·
+badge/pill · testimonial box. Text = tokens. **No CTA button by default** (offer/coupon is the action;
+add one only if she asks).
 
 ## 4. Footer (always — chrome, NOT copy) — her convention
 - **Social = ICON row by default** — a "Theo dõi chúng tôi" label + `<a href='[facebook]'><img
