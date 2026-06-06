@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.16.9"
+  version: "0.17.0"
 ---
 
 # Inline Email Builder
@@ -28,8 +28,12 @@ correct email code**. She fills the client-specific bits (logo, links, images) h
 editor — that's trivial for her, and it keeps client data OFF the agent.
 
 - **Reply in Vietnamese**, concise.
-- **Your job = the design + code.** Produce a beautiful, rules-compliant, responsive inline-CSS
-  fragment with clear `[placeholder]` tokens for everything client-specific.
+- **Your job = the FRAME, NOT the words.** Design a beautiful, rules-compliant, responsive inline-CSS
+  **frame** (header/footer/colours/layout per brand + occasion) and leave the **editorial text as
+  tokens** — `[title]` (heading) + `[content]` (body) — for her to fill, exactly like her merge
+  pipeline (see her `code.txt`: just `[title]` + `[content]` inside a designed shell). **Do NOT write
+  marketing copy, and do NOT add sections/buttons she didn't ask for.** She builds the body (paragraphs,
+  offer, CTA, lists…) inside `[content]` herself. You style the slots; she fills the words.
 - **Recommend Layout + Style — don't make her choose blind.** Brand industry + colors are GIVEN
   context (never ask her to pick "by color/industry"). From this email's **occasion + campaign**,
   proactively suggest a fitting Layout + Style with a one-line reason (see
@@ -94,20 +98,19 @@ fallback; see "Background images" in `references/email-html-rules.md`.)
 
 ## Workflow
 
-1. **Parse brief** → from her Vietnamese request (industry, occasion, style, content; the form in
-   `references/brief-input-template.md` is optional). **Any field she doesn't specify →
-   auto-generate a value that fits**; never block on optional fields. **All client-specific data
-   (logo, links, images) stays as `[tokens]`** for her to fill in her editor — do not ask for it.
-   Only ask if the brief is essentially empty.
+1. **Parse brief** → her 8-field prompt (see `references/brief-input-template.md`). **Any STYLE /
+   LAYOUT field she leaves blank → auto-pick a fitting one.** The **message text is NEVER generated** —
+   heading stays `[title]`, body stays `[content]` for her to fill. All client data (logo, links,
+   images) stays as `[tokens]` too. Only ask if the brief is essentially empty.
 2. **Theme + visual style** → harmonize a 2–3 colour palette with the **brand's stated colour**
    (it's given — don't invent one) + a web-safe font fitting the industry (contrast ≥ 4.5:1, see
    `references/theming-guide.md`), and pick a look — modern minimal, dark, editorial, duotone,
    bento… see `references/design-guidelines.md`. Style is a separate dial from layout; vary per brief.
 3. **Choose a fresh layout for THIS brief** — pick an archetype from
    `references/layout-patterns.md` (or compose a new one) that fits the occasion; don't default
-   to the same structure every time. **Even two emails of the same occasion (e.g. two promos) must
-   differ STRUCTURALLY — changing only colour + copy is NOT enough** (see "Vary even within the
-   same occasion" in `references/recommendations.md`). Remix the concrete designs in `templates/examples/*` —
+   to the same structure every time. **Two emails of the same occasion must differ STRUCTURALLY in
+   the FRAME — not just recolour the same shell** (see "Vary even within the same occasion" in
+   `references/recommendations.md`). Remix the concrete designs in `templates/examples/*` —
    reference starting points, not a required skeleton. For "image + text" sections that sit
    side-by-side on desktop and stack on mobile, use `templates/blocks/media-row.html` (fluid
    inline-block, no media query, no Bootstrap — see "Multi-column" in `references/email-html-rules.md`).
@@ -115,23 +118,22 @@ fallback; see "Background images" in `references/email-html-rules.md`.)
    logo-top-left + a plain text-link footer every time.** Choose per style: logo left / centred /
    in a coloured band; social as a text row / **icon row** (`[icon_*]` tokens) / a "Theo dõi:" label /
    placed in the header. (See "Vary the HEADER & FOOTER too" in `references/recommendations.md`.)
-4. **Write copy** for `[title]` + `[content]` in the requested tone/language, following the
-   **format** rules in `references/design-guidelines.md` (headline no full stop, benefits as a `✓`
-   list, promo/code in a tinted box…) AND the **messaging** rules in
-   `references/copywriting-rules.md` (one clear-benefit headline, ONE action-verb CTA, scannable
-   benefits, tone per industry).
+4. **Leave the text as TOKENS — do NOT write copy.** Heading → `[title]`; body → `[content]` (a
+   single slot she fills with her own HTML: paragraphs, offer, CTA, lists…). Don't invent benefit
+   lists / offer boxes / CTA buttons she didn't ask for — keep the frame clean (like her `code.txt`).
+   Just **style the `[title]` + `[content]` containers** (font-family, size, colour, line-height per
+   `design-guidelines.md`) so her pasted text inherits a good look.
 5. **Fill** inline styles with concrete theme colours (real hex, harmonized with the brand
    colour). Leave every image as its `[token]` unless the user explicitly provided a URL.
-6. **Validate & self-review** — run the linter (fix every ERROR, and any WARNING that flags a
-   missing required element like unsubscribe), then self-review against
-   `references/quality-checklist.md` (preview text, one clear CTA, **unsubscribe/footer**, full
-   Vietnamese diacritics, not too long, CTA contrast, tone…). Run the linter from THIS skill's own directory (works wherever installed —
+6. **Validate & self-review** — run the linter (fix every ERROR), then self-review against
+   `references/quality-checklist.md` (the `[title]`/`[content]` slots present, **unsubscribe/footer**,
+   token slots not invented copy, full diacritics on the fixed chrome, contrast, responsive). Run the linter from THIS skill's own directory (works wherever installed —
    `.codex/skills/`, `.claude/skills/`, etc.):
    ```bash
    cd <this-skill-directory> && python3 scripts/validate_email.py <output.html>
    ```
-7. **Return** the final fragment in a fenced ```html block, then a short **"fill these" list** —
-   the `[token]` placeholders she replaces in her editor (logo, images, links).
+7. **Return** the final frame in a fenced ```html block, then a short **"fill these" list** — the
+   `[token]` placeholders she replaces: **`[title]` + `[content]`** (the text) plus logo, images, links.
 
 ## Quality upgrades over legacy templates
 
