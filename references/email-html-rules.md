@@ -21,7 +21,8 @@ Degrades gracefully: on phones the container fills the screen up to `max-width`.
 
 ### Multi-column that auto-stacks (NO Bootstrap, NO media query)
 "Image left + text right on desktop → image on top + text below on mobile" is fully doable
-inline. Use the **fluid inline-block wrap** ("media object") in `templates/blocks/media-row.html`:
+inline. Use the **fluid inline-block wrap** ("media object") — concrete blocks in `templates/blocks/`
+(`image-2-across`, `image-4-grid`, `image-pair-side-text`):
 - Parent `font-size:0; text-align:center;` (kills inline-block whitespace gap).
 - Each column `display:inline-block; width:100%; max-width:280px; vertical-align:top;` and
   resets its own `font-size`. The two column divs MUST be adjacent (no whitespace between them).

@@ -25,6 +25,8 @@ Hãy tự thiết kế nội dung, bố cục và cấu trúc email cho phù h�
 - **Đối tượng / Mục đích** → ảnh hưởng **tông THIẾT KẾ** (tri ân → luxe, sale → rực rỡ), không phải chữ.
 - **Banner = optional** — chèn `[banner]` (ảnh foreground) cho ra mắt / khuyến mãi / showcase; bỏ cho
   mail tối giản / giao dịch. Cô ấy thêm/xoá được.
+- **Ảnh thân**: skill **chọn cách xếp** (block: 2-ngang / 2×2 / cặp-dọc+chữ…) theo layout + đổi mỗi
+  lần; để token `[image_N]` cho cô ấy điền ảnh. Xem `layout-patterns.md`.
 - **Mục đích + Phong cách** → chọn Layout + Style frame (`recommendations.md`), harmonize với Màu.
 - Logo / ảnh / link KHÔNG có trong brief → để `[token]`, liệt kê ở cuối ("fill these").
 - Mỗi brief = một thiết kế khác (anti-sameness) — đổi cấu trúc, đừng lặp mẫu lần trước.

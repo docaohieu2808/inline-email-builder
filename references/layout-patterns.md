@@ -1,38 +1,39 @@
-# Layout patterns (a palette to remix — pick/vary per brief)
+# Layout catalog — assemble a varied layout from these parts
 
-Every email is a **different design**. Don't reuse one structure. Use this as a menu: pick an
-archetype that fits the occasion, then re-theme and rearrange. Mixing archetypes is encouraged.
-All patterns obey the hard rules (inline CSS, no `<style>`, fluid responsive). Concrete worked
-examples live in `templates/examples/` (they are nails-themed — copy the STRUCTURE, not the copy).
+The skill is a **layout assembler**: combine the parts below into a different layout each time (like
+an app where one click changes the layout). **Text = `[title]` + `[content]` tokens (never written).
+Images = `[image_N]` tokens.** Concrete block HTML lives in `templates/blocks/`.
 
-## Archetypes
+## 1. Logo position (header)
+- **Left** — logo left, optional "view online" link right (2-col header).
+- **Centred** — logo centred, optional tagline under it; or on a coloured brand band.
+- **Right** — logo right (less common, good for variety).
 
-| # | Archetype | Best for | Structure sketch |
-|---|---|---|---|
-| A | **Hero + media-rows** | product/service highlights, "what's new" | logo → banner → intro → alternating image+text rows → CTA → social → footer |
-| B | **Editorial single-column** | luxury/premium, storytelling, announcements | centered logo → full-width hero → centered headline + prose → divider → outline CTA → text links |
-| C | **Promo / voucher** | sales, discounts, coupon codes | small logo → big SALE banner → 1-line offer → dashed voucher block (code) → big rounded CTA → social |
-| D | **Grid / catalog** | menus, collections, multiple SKUs | logo → slim banner → intro → 2×N tile grid (image + label + price) → CTA → social |
-| E | **Newsletter / digest** | recurring updates, multi-topic | logo → section blocks (heading + blurb + read-more), repeated → footer |
-| F | **Transactional / receipt** | confirmations, bookings, orders | logo → status headline → detail table (label/value rows) → support links → footer |
-| G | **Plain personal** | founder notes, re-engagement | logo (or none) → left-aligned text only, minimal styling, one inline link CTA |
+## 2. Banner (optional)
+- Include a foreground `<img src='[banner]'>` (full-width fluid) for launch / promo / showcase.
+- Skip it for plain / transactional. She can add/remove.
 
-## How to vary (so two emails never look the same)
+## 3. Image-arrangement block (pick one, vary per email)
+Build every multi-image block with the **fluid inline-block** technique (no `box-sizing`; columns
+sized to FIT with slack; equal image sizes; the two column `<div>`s adjacent). See "Multi-column" in
+`email-html-rules.md`. Concrete blocks in `templates/blocks/`:
 
-- **Layout:** swap archetype; change logo placement (left vs centered); banner vs no banner;
-  1-col vs 2-col rows vs grid; CTA shape (rounded pill / square / outline / text link).
-- **Theme:** new palette + web-safe font per industry (see `theming-guide.md`); light vs dark;
-  generous vs tight spacing.
-- **Tone:** match the occasion/language; headline style (playful, elegant, urgent).
+| Block | Looks like | File |
+|---|---|---|
+| 1 image | one full-width image | (just an `<img [image_1]>`) |
+| 2 across | `[img][img]` side by side → stack on mobile | `image-2-across.html` |
+| 2×2 grid | 4 images, 2 top + 2 bottom | `image-4-grid.html` |
+| 2 stacked + text | a vertical image pair on one side + `[content]` on the other (mirror to swap side) | `image-pair-side-text.html` |
 
-## Responsive building blocks (no media query)
+(Compose new ones freely — 3-across, image+text row, etc. — same fluid technique.)
 
-- **Fluid container:** `width:100%; max-width:Npx; margin:0 auto`.
-- **Fluid image:** `width:100%; max-width:Npx; height:auto; display:block`.
-- **Auto-stacking columns** (2-col → 1-col, or grid): the `font-size:0` parent + `inline-block`
-  `max-width` children trick — see `templates/blocks/media-row.html` and "Multi-column" in
-  `email-html-rules.md`. Reuse it for 2-up rows, 3-up features, or N×2 grids.
+## 4. Footer (always — chrome, NOT copy)
+Social links (`[facebook] [instagram] [youtube]` — text row / icon row / "Theo dõi:" label) +
+**`[contact]`** + **`[unsubscribe]`** + a "view in browser" (`[domain]`). Style per the look; the
+content here is fixed boilerplate, not marketing copy.
 
-## Reminder
-The constant is the **rules + token contract**, not the look. Always finish by running
-`scripts/validate_email.py` and fixing every ERROR.
+## Assembling
+`logo(position) → [banner?] → [title] → [content] → image-block → footer` — but the **order is yours
+to vary** (e.g. image block above `[title]`, or `[content]` beside a 2-stacked block). Pick a fresh
+combo each time (see `recommendations.md`). Style every part per the brand colour + chosen Style
+(`design-guidelines.md` / `theming-guide.md`), tight spacing, sans + NFC (SKILL rule 8).

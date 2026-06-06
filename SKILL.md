@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.17.1"
+  version: "0.18.0"
 ---
 
 # Inline Email Builder
@@ -14,11 +14,11 @@ inboxes. This skill is the **framework** — it encodes the hard parts (client q
 inline-only CSS, fluid responsiveness, token contract) so they stay consistent. The
 **design itself is fresh every time**.
 
-> **Design a fresh FRAME for each request — don't reuse one fixed shell.** Vary the *frame*
-> (header treatment, with/without banner, footer + social style, colours per occasion) so it never
-> looks templated. The **body is `[content]`** — she fills it; you do NOT lay out hero/grid/cards
-> inside. What stays identical across every email = the rules + token contract below; only the
-> frame's look changes.
+> **Assemble a fresh LAYOUT for each request — like an app, a different layout every time.** Vary:
+> **logo position** (left / centred / right), **banner** (yes / no), the **image-arrangement block**
+> (1 image · 2 across · 2 stacked + text · 2×2 grid · …), and the **footer/social** style. The **text
+> stays `[title]` + `[content]` tokens** (you NEVER write copy); images are `[image_N]` tokens in the
+> chosen arrangement. What's identical every time = the rules + token contract below; the layout changes.
 
 ## Who you're talking to (CRITICAL — read first)
 
@@ -27,12 +27,11 @@ correct email code**. She fills the client-specific bits (logo, links, images) h
 editor — that's trivial for her, and it keeps client data OFF the agent.
 
 - **Reply in Vietnamese**, concise.
-- **Your job = the FRAME, NOT the words.** Design a beautiful, rules-compliant, responsive inline-CSS
-  **frame** (header/footer/colours/layout per brand + occasion) and leave the **editorial text as
-  tokens** — `[title]` (heading) + `[content]` (body) — for her to fill, exactly like her merge
-  pipeline (see her `code.txt`: just `[title]` + `[content]` inside a designed shell). **Do NOT write
-  marketing copy, and do NOT add sections/buttons she didn't ask for.** She builds the body (paragraphs,
-  offer, CTA, lists…) inside `[content]` herself. You style the slots; she fills the words.
+- **Your job = the LAYOUT + look, NOT the words.** Assemble a varied layout — **logo position** ·
+  optional **`[banner]`** · an **image-arrangement block** (2-across / 2×2 grid / 2-stacked+text…) ·
+  **footer** (social + `[contact]` + `[unsubscribe]` + view-online) — and style it per brand/occasion.
+  **Leave TEXT as tokens** `[title]` (heading) + `[content]` (body) — you NEVER write marketing copy.
+  **Images go in `[image_N]` slots** (she fills them). You build the structure; she fills words + images.
 - **Recommend Layout + Style — don't make her choose blind.** Brand industry + colors are GIVEN
   context (never ask her to pick "by color/industry"). From this email's **occasion + campaign**,
   proactively suggest a fitting Layout + Style with a one-line reason (see
@@ -90,10 +89,11 @@ mobile-friendly. Example brief:
 
 Reuse the bracket tokens the team already uses; fill concrete values when the brief gives
 them, otherwise LEAVE the token for their merge system:
-`[logo] [title] [content] [domain] [banner] [bg_image] [facebook] [instagram] [tiktok] [youtube]
-[cta_text] [cta_url] [contact] [name] [unsubscribe]`
-(`[bg_image]` = optional CSS background image on a card/section — always with a `background-color`
-fallback; see "Background images" in `references/email-html-rules.md`.)
+`[logo] [title] [content] [domain] [banner] [image_1] [image_2] [image_3] [image_4] [bg_image]
+[facebook] [instagram] [youtube] [tiktok] [cta_text] [cta_url] [contact] [name] [unsubscribe]`
+(`[image_N]` = the image slots in the chosen arrangement block, each with an `[image_N_alt]`.
+`[bg_image]` = optional CSS background image — always with a `background-color` fallback; see
+"Background images" in `references/email-html-rules.md`.)
 
 ## Workflow
 
@@ -105,13 +105,13 @@ fallback; see "Background images" in `references/email-html-rules.md`.)
    (it's given — don't invent one) + a web-safe font fitting the industry (contrast ≥ 4.5:1, see
    `references/theming-guide.md`), and pick a look — modern minimal, dark, editorial, duotone,
    bento… see `references/design-guidelines.md`. Style is a separate dial from layout; vary per brief.
-3. **Design a fresh FRAME for THIS brief** — vary the **header** (logo left / centred / in a coloured
-   brand band), the **optional `[banner]`** (include for launch/promo/showcase, skip for plain/
-   transactional — she can add/remove), and the **footer + social** style (text row / icon row /
-   "Theo dõi:" label / in the header). **Don't reuse the same shell each time** — change the frame, not
-   just the colour (see "Vary even within the same occasion" in `references/recommendations.md`). The
-   area between header and footer is just the styled `[title]` + `[content]` slots — you do NOT lay out
-   hero/grid/cards there (she builds that inside `[content]`).
+3. **Assemble a fresh LAYOUT for THIS brief** from the catalog in `references/layout-patterns.md`:
+   pick a **logo position** (left/centred/right), **banner** (yes/no), an **image block**
+   (`templates/blocks/*` — 2-across, 2×2 grid, 2-stacked+text…), and a **footer/social** style. Place
+   the `[title]` + `[content]` text slots + the image block in a sensible order. **Vary the combo each
+   time** — don't reuse the same one (see "Vary even within the same occasion" in `recommendations.md`).
+   Build image blocks with the **fluid inline-block** technique (no `box-sizing`, columns fit with
+   slack, equal sizes) — see "Multi-column" in `references/email-html-rules.md`.
 4. **Leave the text as TOKENS — do NOT write copy.** Heading → `[title]`; body → `[content]` (a
    single slot she fills with her own HTML: paragraphs, offer, CTA, lists…). Don't invent benefit
    lists / offer boxes / CTA buttons she didn't ask for — keep the frame clean (like her `code.txt`).
