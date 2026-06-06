@@ -3,7 +3,7 @@
 `layout-patterns.md` = structure · `theming-guide.md` = colour/font · **THIS** = the visual,
 typographic, content-formatting and component conventions that make output look professional and
 consistent. Apply on top of whatever layout/style is chosen. Conventions, not a fixed look —
-adapt to the style (luxe = hairline dividers + serif; bright = bolder boxes).
+adapt to the style (luxe = hairline dividers + whitespace; bright = bolder boxes).
 
 ## A. Style directions (the overall look)
 Minimal · Dark · Luxe · Editorial · Duotone · Bento · Bright · Classic. What makes it modern:
@@ -14,8 +14,8 @@ Minimal · Dark · Luxe · Editorial · Duotone · Bento · Bright · Classic. W
 - **Rounded** — `border-radius` on cards/images/buttons (pill `999px`) for modern; sharper for classic/editorial.
 - **Narrow column** — `max-width:520–600px` reads more premium than 640.
 - **Flat / high-contrast** — clean light bg (`#fbfaf8`) or dark (`#0d0d10` + light text + accent).
-- **Honest font limit** — no custom web fonts (need `<style>`); use a web-safe stack
-  (`"Helvetica Neue",Helvetica,Arial` / `Georgia,serif`). Size + weight + spacing carry it.
+- **Honest font limit** — no custom web fonts (need `<style>`); use a web-safe sans stack
+  (`"Helvetica Neue",Helvetica,Arial`). Size + weight + spacing carry it.
 
 ## B. Typography rules
 - **Headline** — short, **NO full stop** at the end.
@@ -63,28 +63,13 @@ Minimal · Dark · Luxe · Editorial · Duotone · Bento · Bright · Classic. W
 - **Keep it TIGHT.** A typical email = logo → hero/headline → 1–3 sections → offer → CTA → footer.
   Don't cram every possible block (header-row + intro + banner + grid + cards + …). Restraint reads
   premium; a long busy email reads cheap. If a section doesn't earn its place, cut it.
-- **Multi-column must actually FIT** (stat rows, feature cards, product grids). Each column's
-  `max-width` must be ≤ `(container_width − side_padding) ÷ N`, or the row wraps to an ugly **2+1
-  orphan**. For a ~600px card: **3-up → col ≤ ~165px**, **2-up → col ≤ ~270px** (incl. padding). If
-  3 won't fit cleanly, use 2-up or stack — never ship a 3-up that breaks to 2+1.
-  **Do NOT use `box-sizing:border-box` to make columns fit** — Outlook & many clients IGNORE it, so
-  the real footprint = `max-width` **+ the column's own left/right padding**. Either bake that padding
-  into the number, OR (cleaner) put **no padding on the inline-block column** and pad an INNER div
-  instead. Leave ~20–40px slack so a 1px border never tips it into wrapping.
-- **Side-by-side cards: balance the HEIGHT — and YOU control it because you write the copy.**
-  Rendered height can't be read off the HTML (it depends on wrapping + font), so don't try to
-  *detect* imbalance after the fact — **author both cards to a similar line count from the start.**
-  Estimate lines per card from the code: a `✓`/bullet list = **one line per item**; a paragraph ≈
-  **`characters ÷ ~30`** lines (for a ~270px card). Keep the two within ~1 line of each other (mixed
-  list + paragraph is fine if the line counts match).
-  - **`min-height` is only a FLOOR** — it equalises *only when BOTH cards fit inside it*. A paragraph
-    taller than the `min-height` still overflows, so the boxes stay uneven. min-height fixes *small*
-    differences; it can NOT shorten a genuinely longer card. (This is why a long paragraph still looks
-    lopsided despite a min-height.)
-  - If the two contents can't be made similar length, **stack them full-width** (one column) — then
-    there's no side-by-side height problem at all.
-  - (No auto equal-height in email: flexbox `align-items:stretch` / `display:table-cell` break in
-    Outlook or don't stack on mobile.)
+- **Multi-column must FIT — no 2+1 orphan** (stat rows, cards, grids). Size columns so N of them +
+  their padding sit under the container with slack; **don't rely on `box-sizing`** (sizing math + the
+  box-sizing trap live in `email-html-rules.md` → "Multi-column"). If 3 won't fit, go 2-up or stack.
+- **Side-by-side cards must look equal-height.** You write the copy → author both to a similar line
+  count (a `✓` list = 1 line/item; a paragraph ≈ chars ÷ 30). `min-height` only floors *small*
+  differences — it can't shorten a longer card; if they can't match, **stack** instead. (Email has no
+  reliable auto equal-height — flexbox/table-cell break.)
 
 ## Reminder
 Adapt to the chosen style, but still obey the hard rules + run `validate_email.py`.
