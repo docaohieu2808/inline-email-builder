@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.17.0"
+  version: "0.17.1"
 ---
 
 # Inline Email Builder
@@ -14,12 +14,11 @@ inboxes. This skill is the **framework** — it encodes the hard parts (client q
 inline-only CSS, fluid responsiveness, token contract) so they stay consistent. The
 **design itself is fresh every time**.
 
-> **Design a NEW layout for each request — do not reuse one fixed template.** Every brief
-> is a different industry/occasion/style, so vary the structure (hero, media-rows, grid,
-> promo/voucher, single-column editorial…) and the theme to fit *this* job. The files in
-> `templates/` and the examples in `templates/examples/` are a **palette to remix**, never a
-> mandatory skeleton. What must stay identical across every email is the rules + token
-> contract below — not the look.
+> **Design a fresh FRAME for each request — don't reuse one fixed shell.** Vary the *frame*
+> (header treatment, with/without banner, footer + social style, colours per occasion) so it never
+> looks templated. The **body is `[content]`** — she fills it; you do NOT lay out hero/grid/cards
+> inside. What stays identical across every email = the rules + token contract below; only the
+> frame's look changes.
 
 ## Who you're talking to (CRITICAL — read first)
 
@@ -106,18 +105,13 @@ fallback; see "Background images" in `references/email-html-rules.md`.)
    (it's given — don't invent one) + a web-safe font fitting the industry (contrast ≥ 4.5:1, see
    `references/theming-guide.md`), and pick a look — modern minimal, dark, editorial, duotone,
    bento… see `references/design-guidelines.md`. Style is a separate dial from layout; vary per brief.
-3. **Choose a fresh layout for THIS brief** — pick an archetype from
-   `references/layout-patterns.md` (or compose a new one) that fits the occasion; don't default
-   to the same structure every time. **Two emails of the same occasion must differ STRUCTURALLY in
-   the FRAME — not just recolour the same shell** (see "Vary even within the same occasion" in
-   `references/recommendations.md`). Remix the concrete designs in `templates/examples/*` —
-   reference starting points, not a required skeleton. For "image + text" sections that sit
-   side-by-side on desktop and stack on mobile, use `templates/blocks/media-row.html` (fluid
-   inline-block, no media query, no Bootstrap — see "Multi-column" in `references/email-html-rules.md`).
-   **Also pick a header + footer/social treatment that fits THIS style — don't auto-default to
-   logo-top-left + a plain text-link footer every time.** Choose per style: logo left / centred /
-   in a coloured band; social as a text row / **icon row** (`[icon_*]` tokens) / a "Theo dõi:" label /
-   placed in the header. (See "Vary the HEADER & FOOTER too" in `references/recommendations.md`.)
+3. **Design a fresh FRAME for THIS brief** — vary the **header** (logo left / centred / in a coloured
+   brand band), the **optional `[banner]`** (include for launch/promo/showcase, skip for plain/
+   transactional — she can add/remove), and the **footer + social** style (text row / icon row /
+   "Theo dõi:" label / in the header). **Don't reuse the same shell each time** — change the frame, not
+   just the colour (see "Vary even within the same occasion" in `references/recommendations.md`). The
+   area between header and footer is just the styled `[title]` + `[content]` slots — you do NOT lay out
+   hero/grid/cards there (she builds that inside `[content]`).
 4. **Leave the text as TOKENS — do NOT write copy.** Heading → `[title]`; body → `[content]` (a
    single slot she fills with her own HTML: paragraphs, offer, CTA, lists…). Don't invent benefit
    lists / offer boxes / CTA buttons she didn't ask for — keep the frame clean (like her `code.txt`).
