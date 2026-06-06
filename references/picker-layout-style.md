@@ -20,9 +20,9 @@ nào", show bảng này.
 |---|---|---|
 | 1 | Tối giản hiện đại | trắng nhiều, chữ lớn, pill button — sạch |
 | 2 | Tối sang (dark) | nền đen, hero gradient, nút neon |
-| 3 | Sang trọng (luxe) | đen + vàng gold, serif — cao cấp |
+| 3 | Sang trọng (luxe) | đen + vàng gold, nhiều khoảng trắng — cao cấp |
 | 4 | Rực rỡ (bright) | màu nóng, năng lượng — hợp sale |
-| 5 | Tạp chí (editorial) | serif, hero lớn — magazine |
+| 5 | Tạp chí (editorial) | hero lớn, chữ to thanh mảnh — magazine |
 | 6 | Hai tông (duotone) | 2 màu xuyên suốt ảnh + nút |
 | 7 | Bento | thẻ bo tròn xếp khối, trẻ trung |
 | 8 | Cổ điển (classic) | truyền thống, an toàn |
