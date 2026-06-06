@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.18.0"
+  version: "0.18.1"
 ---
 
 # Inline Email Builder
@@ -109,7 +109,7 @@ them, otherwise LEAVE the token for their merge system:
    pick a **logo position** (left/centred/right), **banner** (yes/no), an **image block**
    (`templates/blocks/*` — 2-across, 2×2 grid, 2-stacked+text…), and a **footer/social** style. Place
    the `[title]` + `[content]` text slots + the image block in a sensible order. **Vary the combo each
-   time** — don't reuse the same one (see "Vary even within the same occasion" in `recommendations.md`).
+   time** — don't reuse the same one (see "Vary the LAYOUT each time" in `recommendations.md`).
    Build image blocks with the **fluid inline-block** technique (no `box-sizing`, columns fit with
    slack, equal sizes) — see "Multi-column" in `references/email-html-rules.md`.
 4. **Leave the text as TOKENS — do NOT write copy.** Heading → `[title]`; body → `[content]` (a
