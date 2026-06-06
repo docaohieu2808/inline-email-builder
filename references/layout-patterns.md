@@ -20,18 +20,23 @@ Images = `[image_N]` tokens.** Concrete block HTML lives in `templates/blocks/`.
 - Skip it for plain / transactional. She can add/remove.
 
 ## 3. Image-arrangement block (pick one, vary per email)
-Build every multi-image block with the **fluid inline-block** technique (no `box-sizing`; columns
-sized to FIT with slack; equal image sizes; the two column `<div>`s adjacent). See "Multi-column" in
-`email-html-rules.md`. Concrete blocks in `templates/blocks/`:
+**Each image = a FRAMED CARD** (border + white mat + radius + shadow + caption — like a PowerPoint
+picture placeholder), NEVER a bare `<img>` (Design Guidelines §1). Build multi-image blocks with the
+**fluid inline-block** technique (no `box-sizing`; columns FIT with slack; equal sizes; column `<div>`s
+adjacent — see "Multi-column" in `email-html-rules.md`). Concrete blocks in `templates/blocks/`:
 
 | Block | Looks like | File |
 |---|---|---|
-| 1 image | one full-width image | (just an `<img [image_1]>`) |
-| 2 across | `[img][img]` side by side → stack on mobile | `image-2-across.html` |
-| 2×2 grid | 4 images, 2 top + 2 bottom | `image-4-grid.html` |
+| 1 framed card | one image in a card | `image-card-frame.html` |
+| 2 across | two framed cards side by side → stack on mobile | `image-2-across.html` |
+| 2×2 grid | four framed cards, 2 top + 2 bottom | `image-4-grid.html` |
 | 2 stacked + text | a vertical image pair on one side + `[content]` on the other (mirror to swap side) | `image-pair-side-text.html` |
 
-(Compose new ones freely — 3-across, image+text row, etc. — same fluid technique.)
+(Compose new ones freely — 3-across, image+text row… — same fluid technique, same framed cards.)
+
+## 3b. Content components (design per the occasion — see `design-guidelines.md` §4)
+`offer-box.html` (SOLID % / DASHED code) · `cta-button.html` (big accent button) ·
+`benefit-tick-list.html` (`✓` + `[benefit_N]`) · badge/pill · testimonial box. Text = tokens.
 
 ## 4. Footer (always — chrome, NOT copy) — her convention
 - **Social = ICON row by default** — a "Theo dõi chúng tôi" label + `<a href='[facebook]'><img

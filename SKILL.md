@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.18.2"
+  version: "0.19.0"
 ---
 
 # Inline Email Builder
@@ -27,11 +27,12 @@ correct email code**. She fills the client-specific bits (logo, links, images) h
 editor — that's trivial for her, and it keeps client data OFF the agent.
 
 - **Reply in Vietnamese**, concise.
-- **Your job = the LAYOUT + look, NOT the words.** Assemble a varied layout — **logo position** ·
-  optional **`[banner]`** · an **image-arrangement block** (2-across / 2×2 grid / 2-stacked+text…) ·
-  **footer** (social + `[contact]` + `[unsubscribe]` + view-online) — and style it per brand/occasion.
-  **Leave TEXT as tokens** `[title]` (heading) + `[content]` (body) — you NEVER write marketing copy.
-  **Images go in `[image_N]` slots** (she fills them). You build the structure; she fills words + images.
+- **Your job = the DESIGN, NOT the words.** Assemble a varied layout (logo position · `[banner]` ·
+  image block · footer) AND **design the components** per the **Email Template Design Guidelines**
+  (`references/design-guidelines.md`): **frame every image** (card = border + mat + shadow + caption —
+  NEVER a bare `<img>`), offer boxes, CTA buttons, tick lists, badges, dividers, gradients/rounded.
+  **All TEXT is a TOKEN** (`[title] [content] [offer] [cta_text] [benefit_N] [image_N_caption]…`) — you
+  design the boxes, you NEVER write the words. **Never ship bare flat boxes — design it.**
 - **Recommend Layout + Style — don't make her choose blind.** Brand industry + colors are GIVEN
   context (never ask her to pick "by color/industry"). From this email's **occasion + campaign**,
   proactively suggest a fitting Layout + Style with a one-line reason (see
@@ -90,11 +91,13 @@ mobile-friendly. Example brief:
 
 Reuse the bracket tokens the team already uses; fill concrete values when the brief gives
 them, otherwise LEAVE the token for their merge system:
-`[logo] [title] [content] [domain] [banner] [image_1] [image_2] [image_3] [image_4] [bg_image]
-[facebook] [instagram] [youtube] [tiktok] [cta_text] [cta_url] [contact] [name] [unsubscribe]`
-(`[image_N]` = the image slots in the chosen arrangement block, each with an `[image_N_alt]`.
-`[bg_image]` = optional CSS background image — always with a `background-color` fallback; see
-"Background images" in `references/email-html-rules.md`.)
+`[logo] [title] [content] [domain] [banner] [image_1..4] [image_N_alt] [image_N_caption] [bg_image]
+[eyebrow] [offer] [offer_label] [coupon] [cta_text] [cta_url] [benefit_1..n] [testimonial] [author]
+[badge] [divider_*] [icon_*] [facebook] [instagram] [youtube] [tiktok] [contact] [name] [unsubscribe]`
+(Component tokens — `[offer]`, `[cta_text]`, `[benefit_N]`, `[image_N_caption]`, `[testimonial]`… —
+are the **text slots inside the designed components** (see `design-guidelines.md` §4). The skill
+designs the box; she fills the token. `[icon_*]` = social icon images; `[divider_*]` = a designed
+wave/curve divider image; `[bg_image]` = CSS background — always with a `background-color` fallback.)
 
 ## Workflow
 
@@ -113,11 +116,12 @@ them, otherwise LEAVE the token for their merge system:
    time** — don't reuse the same one (see "Vary the LAYOUT each time" in `recommendations.md`).
    Build image blocks with the **fluid inline-block** technique (no `box-sizing`, columns fit with
    slack, equal sizes) — see "Multi-column" in `references/email-html-rules.md`.
-4. **Leave the text as TOKENS — do NOT write copy.** Heading → `[title]`; body → `[content]` (a
-   single slot she fills with her own HTML: paragraphs, offer, CTA, lists…). Don't invent benefit
-   lists / offer boxes / CTA buttons she didn't ask for — keep the frame clean (like her `code.txt`).
-   Just **style the `[title]` + `[content]` containers** (font-family, size, colour, line-height per
-   `design-guidelines.md`) so her pasted text inherits a good look.
+4. **Apply the Email Template Design Guidelines** (`references/design-guidelines.md`) — **DESIGN the
+   components** that fit the occasion: **frame every image** (card = border + mat + shadow + caption;
+   `templates/blocks/image-card-frame.html` — never a bare `<img>`), offer box (SOLID pastel = %, DASHED
+   = code), big CTA button, tick benefit list, badges, dividers, gradients/rounded corners. **The TEXT
+   in each is a TOKEN** (`[title] [content] [offer] [cta_text] [benefit_N] [image_N_caption]…`) — you
+   design the box, you NEVER write the words. **Don't ship bare flat boxes.**
 5. **Fill** inline styles with concrete theme colours (real hex, harmonized with the brand
    colour). Leave every image as its `[token]` unless the user explicitly provided a URL.
 6. **Validate & self-review** — run the linter (fix every ERROR), then self-review against

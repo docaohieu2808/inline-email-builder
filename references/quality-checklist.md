@@ -10,6 +10,12 @@ Run AFTER `validate_email.py` passes. The validator catches mechanical errors; t
 - [ ] All client bits are `[tokens]` (logo, images, links) — none invented.
 - [ ] Fixed chrome ("Hủy đăng ký", "Xem trên trình duyệt", labels) in **full Vietnamese diacritics**, NFC.
 
+## Design (per Email Template Design Guidelines)
+- [ ] **Not a bare flat box** — card has radius + shadow; design applied (gradient/band/badge/divider).
+- [ ] **Every image is FRAMED** (border + mat + radius + shadow + caption) — no bare `<img>` in the body.
+- [ ] Components designed where they fit (offer box, CTA button, tick list) — text in them = TOKENS.
+- [ ] **Dashed border ONLY on a coupon-code box**; plain % offer = SOLID tinted box.
+
 ## Visual / technical
 - [ ] `[title]`/`[content]` containers styled (font-family, size, line-height) so her pasted text
   inherits a good look.

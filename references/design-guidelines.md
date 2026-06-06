@@ -1,46 +1,62 @@
-# Design guidelines — how the assembled LAYOUT should LOOK
+# Email Template Design Guidelines
 
-`layout-patterns.md` = the blocks to assemble · `theming-guide.md` = colour/font · **THIS** = the
-visual + typographic conventions for styling the layout (frame + image blocks + the `[title]`/
-`[content]` slots). The body text is `[content]` (she fills) — you style the shell + image blocks, not
-her words.
+How the email should **LOOK and READ** — the aesthetic + content-formatting system, not just
+code-correctness. **The skill DESIGNS the components; the TEXT inside is always a TOKEN** (`[title]
+[content] [offer] [cta_text] [benefit_N] [image_N_caption] [testimonial] [author]…`) — you never write
+the words. Apply on top of the chosen layout (`layout-patterns.md`) + palette (`theming-guide.md`).
+Conventions, not a fixed look — adapt to the Style. **Never ship bare flat boxes — design it.**
 
-## A. Style directions (the look)
-Minimal · Dark · Luxe · Editorial · Duotone · Bento · Bright · Classic. What makes it modern:
-- **Whitespace** — generous padding; crowded = dated.
-- **Big headline slot** — `[title]` 28–34px, bold (≤700), `line-height ≥ 1.3` (VN diacritics need room).
-- **Restraint** — ONE accent colour, the rest neutral; no rainbow / heavy shadows.
-- **Rounded** — `border-radius` on images/cards for modern; sharper for classic/editorial.
-- **Narrow column** — `max-width:520–600px` reads premium.
-- **Flat / high-contrast** — clean light bg or dark (+ light text + accent).
-- **Web-safe sans only** — size + weight + spacing carry it (no serif for Vietnamese — SKILL rule 8).
+## 1. Visual design rules (what the eye sees)
+- **Card shell** — white / colour / `[bg_image]`; `border-radius:12–16px`; soft `box-shadow`; Arial.
+- **Frame every image** — an image sits in a CARD: `border:1px solid #eee` + `padding:8–10px` (white
+  mat) + `border-radius` + `box-shadow` (+ optional caption) — like a **PowerPoint picture placeholder**.
+  NEVER a bare `<img>` floating in the body. (block: `image-card-frame.html`)
+- **One accent colour** + neutrals; ≤ 3 hues. Restraint reads premium.
+- **Highlight box** — pastel-of-accent bg or a tinted bordered box to emphasise an offer/aside.
+- **Dashed border = ONLY a coupon-code box.** A plain % offer with no code = **SOLID tinted box**.
+- **Dividers** — a thin 1px hairline, a row of dots, or generous spacing. A **curved / wave / cut**
+  divider must be a designed **IMAGE** (`[divider_*]`) — email CSS can't draw waves/clip-path.
+- **Badges / pills** — small `border-radius:999px` tinted label for eyebrows / tags / prices.
+- **Gradients** — OK, but put a solid `background:#fallback;` FIRST (Outlook ignores the gradient).
+  Diagonal "cut" = `linear-gradient(120deg,#A 50%,#B 50%)`.
+- **Rounded** for modern; sharper for classic. **Circle** image = `border-radius:50%` (square source).
+- **Spacing** — generous, even; tight rhythm (~18–20px gaps); crowded = dated.
 
-## B. Typography (styling the slots + chrome)
-- **`[title]`** — 28–34px, bold, accent/heading colour, `line-height ≥ 1.3`, centred or left per style.
-- **`[content]`** — 15–16px, **`line-height 1.45–1.5`**, neutral colour. Set `font-family` on the
-  container so her pasted text inherits it. Don't put words in it — it's her slot.
-- **Eyebrow/label** (if the frame uses one) — small UPPERCASE, letter-spaced, accent, above `[title]`.
-  UPPERCASE is ONLY for tiny eyebrows — never on body/headings.
-- One typeface family; `font-family` on EVERY text element (Outlook resets `<h1>`/`<p>` to Times else).
+## 2. Typography rules
+- **Heading `[title]`** — 26–34px, bold (≤700), `line-height ≥ 1.3`, **no full stop**, centred/left per style.
+- **Body `[content]`** — 15–16px, `line-height 1.5–1.6`, full stops OK (complete sentences).
+- **Bullets** — short (< ~12 words), usually no full stop.
+- **CTA `[cta_text]`** — action phrase, **no full stop**.
+- **Eyebrow** — UPPERCASE, letter-spacing 2–3px, 11–13px, accent. UPPERCASE **only** for tiny eyebrows.
+- One typeface (**Arial**); hierarchy from size + weight. `font-family` on EVERY text element. Sans, NFC (rule 8).
 
-## C. Component conventions
-| Block | Convention |
-|---|---|
-| Logo / header | top — **vary placement**: left / centred / + tagline / right / inside a coloured band |
-| Banner | optional foreground `<img [banner]>`, full-width fluid, rounded if modern |
-| Image block | 2-across / 2×2 grid / 2-stacked+text — fluid inline-block (`templates/blocks/`), stacks on mobile, **equal sizes** |
-| Divider | thin 1px hairline in a muted tone, OR generous spacing |
-| Footer | small (11–13px), muted; social + `[contact]` + `[unsubscribe]` + view-in-browser |
+## 3. Content-formatting rules (how content is presented — text still tokens)
+- **Benefits / features** → tick list (`✓` accent icon) + `[benefit_N]` tokens.
+- **Step-by-step / process** → numbered list (1. 2. 3.) + tokens.
+- **Promotion / coupon** → highlighted BOX (tinted bg; dashed only for a real code); offer big + bold (`[offer]`).
+- **Quote / testimonial** → tinted box, larger text, `[testimonial]` + `[author]`.
+- **Important aside** → a tinted note box, not buried mid-paragraph.
+- Never a wall of text — short paragraphs + lists / cards.
 
-## D. Spacing & micro-rules
-- **Tight, even vertical rhythm** — section gaps ~18–20px; each section a consistent top padding +
-  `padding-bottom:0` (next section's top sets the gap). `[title]`→`[content]` gap ~8–10px. Compact
-  reads premium; loose/airy reads cheap.
-- **One accent** does the heavy lifting; let it breathe (spacing over borders).
-- **Image blocks must FIT — no 2+1 orphan**: size columns so N of them + padding sit under the
-  container with slack; **never rely on `box-sizing`** (math in `email-html-rules.md` → "Multi-column").
-  Equal image sizes; if they won't fit, fewer-up or stack.
+## 4. Component rules (each block's convention)
+| Component | Convention | Token text |
+|---|---|---|
+| Header / logo | top; vary placement (left / centred / right / in a coloured band) | — |
+| Banner / hero | full-width fluid `<img>`, rounded if modern | `[banner]` |
+| **Framed image card** | border + mat + radius + shadow + caption (PPT placeholder) | `[image_N] [image_N_caption]` |
+| Service / product card | framed image card + bold title + 1-line desc (+ price badge) | `[image_N] [image_N_caption]` |
+| Offer box (no code) | **SOLID** pastel-of-accent box, label + big offer, centred | `[offer]` |
+| Coupon-code box | **DASHED** / cut-out border (only for a real code) | `[coupon]` |
+| CTA button | ONE big padded `<a>`, solid accent bg + white text, rounded; never an image | `[cta_text]`→`[cta_url]` |
+| Benefit list | `✓` accent icons + short lines | `[benefit_N]` |
+| Testimonial | tinted quote box | `[testimonial] [author]` |
+| Badge / pill | small rounded tinted label | `[badge]` |
+| Divider | 1px hairline / dots / spacing / **wave-image** | `[divider_*]` (if image) |
+| Footer | small muted; **ICON** social + `[contact]` + `Copyright © [name]` + unsubscribe/view | — |
 
-## Reminder
-Style the layout, obey the hard rules, run `validate_email.py`. **Don't write copy** — text stays
-`[title]` + `[content]`.
+## 5. Overall (the style guide)
+- Pick ONE **Style** (`picker-layout-style.md`) + the brand colour; apply consistently.
+- **Restraint > clutter** — one accent, tight even rhythm, frame images, design components — but don't
+  cram every block. A long busy email reads cheap.
+- **Vary the layout** each email (`recommendations.md`). Obey the hard rules; run `validate_email.py`.
+- The skill **DESIGNS**; she fills the **TOKENS**. Never write the words.
