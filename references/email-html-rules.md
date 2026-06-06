@@ -78,8 +78,9 @@ A decorative card/section background via CSS is supported in modern clients (Gma
 - Single-quote attributes (`style='...'`) to match the existing templates.
 - Use entities: `&copy;`, `&amp;`, `&nbsp;`.
 - Add a hidden preheader div for inbox preview text (see `templates/examples/`).
-- Use web-safe font stacks (Arial/Helvetica, Georgia, Tahoma, Verdana). Custom web fonts need
-  `<style>`/`@font-face` → not allowed here; pick a web-safe stack instead.
+- Use web-safe **sans** stacks (`"Helvetica Neue", Helvetica, Arial`, or Tahoma/Verdana). Custom web
+  fonts need `<style>`/`@font-face` → not allowed; pick a web-safe stack. (Georgia/Times serif only
+  for English-only copy — they break Vietnamese diacritics; see hard rule 8d.)
 - **Set `font-family` inline on EVERY text element** (`<h1>`, `<p>`, `<a>`, text `<div>`) — do NOT
   rely on inheritance from a parent wrapper. Outlook and several clients RESET font-family on
   `<h1>`/`<p>`/`<td>` to **Times New Roman**, breaking the look (it renders fine in a browser, but
@@ -91,12 +92,19 @@ A decorative card/section background via CSS is supported in modern clients (Gma
 - Real `alt` text, logical reading order.
 - Always include an `[unsubscribe]` link (legal requirement for marketing email).
 
-## Client support target
-Modern clients first (Gmail web/app, Apple Mail, Outlook.com, iOS/Android mail). The div-based
-fluid approach is intentional. NOTE: legacy **Outlook desktop (Word engine)** ignores `max-width`
-and `box-shadow` and may render full-width — acceptable per the existing template's choices. If
-strict Outlook-desktop parity is ever required, that needs table-based layout + VML (out of scope;
-raise it before adding).
+## Where it goes & who sees it (don't conflate the two)
+The fragment is **pasted into an email platform / builder** (the ESP) — that's WHY it must be
+inline-only + fragment + no `<style>`. The platform then **sends it to recipients who open it across
+ALL clients & devices** (Gmail, Apple Mail, mobile, Outlook web AND desktop). So **both layers
+matter**: the platform dictates inline/fragment; the clients dictate rendering. The audience is
+everything → **stay conservative**: fluid widths (no `box-sizing` reliance), bg-image fallbacks, sans
+fonts, NFC, no broken tags. Don't optimise for one modern client and don't assume "the builder
+handles it" — the builder just sends; the inbox decides.
+
+**Client support target:** modern clients render the div-based fluid approach cleanly. **Outlook
+desktop (Word engine)** is the strict one — it ignores `max-width`, `box-shadow`, CSS bg-images and
+`box-sizing`; design so it **degrades gracefully** (a full-width stack is fine), never relying on
+those. Pixel-perfect Outlook needs table layout + VML (out of scope; raise before adding).
 
 ## Images are entirely the user's — do NOT automate or spec
 The skill never auto-fetches, generates, hot-links, optimizes, sizes, specs, or invents an image
