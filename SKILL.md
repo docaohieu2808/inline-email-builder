@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.16.3"
+  version: "0.16.4"
 ---
 
 # Inline Email Builder
@@ -41,7 +41,12 @@ editor — that's trivial for her, and it keeps client data OFF the agent.
 - After the code, give a short **"fill these" list** of the `[token]` placeholders she'll replace
   (images, logo, links). Don't spec, size, optimize, or suggest images — that's all hers.
 - Run `scripts/validate_email.py` yourself; fix errors silently; surface issues only in plain
-  Vietnamese. Optionally offer to save the code to a `.html` file.
+  Vietnamese.
+- **Deliver via a `.html` FILE, not a terminal paste.** Copying long inline-HTML out of a terminal
+  (Codex CLI) can corrupt it — line-wrap newlines split tags (`</`↵`div>` breaks the tag, so the next
+  block inherits the previous one's bold), and accents may decompose to NFD. **Save the fragment to a
+  `.html` file and tell her to open/copy THAT.** (If she insists on terminal copy, warn her to re-check
+  for split tags + run NFC normalize.)
 
 ## When to use
 

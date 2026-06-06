@@ -23,10 +23,15 @@ Degrades gracefully: on phones the container fills the screen up to `max-width`.
 "Image left + text right on desktop → image on top + text below on mobile" is fully doable
 inline. Use the **fluid inline-block wrap** ("media object") in `templates/blocks/media-row.html`:
 - Parent `font-size:0; text-align:center;` (kills inline-block whitespace gap).
-- Each column `display:inline-block; width:100%; max-width:300px; vertical-align:top;` and
+- Each column `display:inline-block; width:100%; max-width:280px; vertical-align:top;` and
   resets its own `font-size`. The two column divs MUST be adjacent (no whitespace between them).
-- Wide container (≥ ~600px) → both 300px columns sit side by side. Narrow (mobile) → each is
-  100% → they wrap to stacked, in source order (put the image column first for image-on-top).
+- **Sizing must leave slack.** 2 columns' total footprint (each `max-width` **plus its own padding**)
+  must be **comfortably under** the container's inner width — e.g. for a ~600px-inner card, 2-up
+  columns ≤ ~280px each. **Never rely on `box-sizing:border-box`** to squeeze them — Outlook ignores
+  it, so a `max-width:290px; padding:8px` column is really **306px** wide → 2×306 > 600 → wraps to
+  one column in the inbox. Put padding on an INNER div, keep the column itself padding-free.
+- Wide container → both columns sit side by side. Narrow (mobile) → each is 100% → they wrap to
+  stacked, in source order (put the image column first for image-on-top).
 Verified: renders side-by-side at 700px and stacked at 380px with zero media queries.
 
 > Do NOT use Bootstrap (or any external CSS framework) in email — clients strip the stylesheet

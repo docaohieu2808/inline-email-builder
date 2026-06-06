@@ -67,6 +67,10 @@ Minimal · Dark · Luxe · Editorial · Duotone · Bento · Bright · Classic. W
   `max-width` must be ≤ `(container_width − side_padding) ÷ N`, or the row wraps to an ugly **2+1
   orphan**. For a ~600px card: **3-up → col ≤ ~165px**, **2-up → col ≤ ~270px** (incl. padding). If
   3 won't fit cleanly, use 2-up or stack — never ship a 3-up that breaks to 2+1.
+  **Do NOT use `box-sizing:border-box` to make columns fit** — Outlook & many clients IGNORE it, so
+  the real footprint = `max-width` **+ the column's own left/right padding**. Either bake that padding
+  into the number, OR (cleaner) put **no padding on the inline-block column** and pad an INNER div
+  instead. Leave ~20–40px slack so a 1px border never tips it into wrapping.
 - **Side-by-side cards: balance the HEIGHT — and YOU control it because you write the copy.**
   Rendered height can't be read off the HTML (it depends on wrapping + font), so don't try to
   *detect* imbalance after the fact — **author both cards to a similar line count from the start.**
