@@ -45,7 +45,10 @@ add one only if she asks).
   `[facebook]` token). Text links only if the style asks.
 - **`[contact]`** · **`Copyright © [name]`** · **`[unsubscribe]`** ("Hủy đăng ký") · view-in-browser
   (`[domain]`, "Xem trên trình duyệt").
-- Footer usually sits **below the card** (outside the shell), like her `code.txt`.
+- **Footer sits INSIDE the card** (the wrapper bounds the whole email — header → body → social →
+  footer = one rounded + shadowed unit, on a subtly tinted bottom band). Don't leave the footer
+  floating on the page background outside the card. (code.txt puts it outside; inside reads more
+  cohesive/designed — prefer inside.)
 
 ## Assembling
 `logo(position) → [banner?] → [title] → [content] → image-block → footer` — but the **order is yours
