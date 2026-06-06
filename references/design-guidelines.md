@@ -9,8 +9,13 @@ Conventions, not a fixed look — adapt to the Style. **Never ship bare flat box
 > **DEFAULT structure = her `code.txt`: logo + `[title]` + `[content]` + icon-social + footer**
 > (`[contact]` + `Copyright © [name]` + unsubscribe/view). The components below (framed image cards,
 > offer/coupon box, badge, banner, tick list, CTA…) are a **toolkit — used ONLY when the brief/content
-> calls for them, never auto-injected.** A plain email is just title + content + social + footer,
-> nicely styled. The rules here say HOW to design a component *when you use one* — not to add them all.
+> calls for them, never auto-injected.** A plain email is just title + content + social + footer.
+>
+> **But two axes, kept separate:** *content blocks* = on-demand · ***visual design = ALWAYS on*.** Even
+> that plain title+content email MUST be richly designed — decorative header (band / gradient + fallback
+> / `[bg_image]`), a **wave / decorative divider**, rounded + soft shadow, styled circular social icons,
+> tasteful colour. **§1 visual rules apply to EVERY email; a flat white rectangle is WRONG.** §4
+> components are the on-demand toolkit — §1 decoration is not optional.
 
 ## 1. Visual design rules (what the eye sees)
 - **Card shell** — white / colour / `[bg_image]`; `border-radius:12–16px`; soft `box-shadow`; Arial.

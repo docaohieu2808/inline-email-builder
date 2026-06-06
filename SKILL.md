@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.19.2"
+  version: "0.19.3"
 ---
 
 # Inline Email Builder
@@ -29,11 +29,14 @@ editor — that's trivial for her, and it keeps client data OFF the agent.
 - **Reply in Vietnamese**, concise.
 - **Your job = the DESIGN, NOT the words.** **DEFAULT structure = her `code.txt`:** logo + `[title]`
   + `[content]` + **icon-social** + footer (`[contact]` + `Copyright © [name]` + unsubscribe/view).
-  Style it well (clean card + `box-shadow`, accent heading, Arial) — a polished email, NOT a bare flat
-  box. **Extra components — image blocks / framed cards, offer / coupon box, badge, banner, tick list,
-  CTA — are OPTIONAL: add ONLY when the brief or content calls for them, NEVER auto-inject.** (A plain
-  email = title + content + social + footer. Don't sprinkle a coupon / CTA / image grid onto every
-  one.) When you DO use a component, design it per the **Email Template Design Guidelines**
+  **Two separate axes — keep them straight:**
+  - **STRUCTURE = code.txt** (title + content + social + footer). Extra **content blocks** — image
+    grid / offer / coupon box / badge / banner / tick list / CTA — are **on-demand: add ONLY when the
+    brief or content calls for them, NEVER auto-inject** onto a plain email.
+  - **VISUAL DESIGN = ALWAYS rich** — decorative header (coloured band / gradient + fallback /
+    `[bg_image]`), a **wave / decorative divider**, rounded corners + soft shadow, styled (circular)
+    social icons, tasteful colour. **A plain white rectangle is WRONG** — even a bare title+content
+    email MUST look designed. Decoration is always on; only the content blocks above are optional. When you DO use a component, design it per the **Email Template Design Guidelines**
   (`references/design-guidelines.md`): frame images, dashed = code / solid = %, etc. **All TEXT is a
   TOKEN** (`[title] [content] [offer] [image_N_caption]…`) — you design the boxes, never write the words.
 - **Recommend Layout + Style — don't make her choose blind.** Brand industry + colors are GIVEN
