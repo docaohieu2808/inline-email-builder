@@ -126,4 +126,4 @@ Both are valid — pick to match the style:
   *fonts* needing `<link>`/`<style>` (banned) — they render as empty boxes in email. "Use icons"
   means emitting `[icon_*]` **tokens only**; the agent never hotlinks an icon CDN or fetches an
   icon. She fills the tokens from her own hosted PNG set.
-Default to text; use icons (as tokens) when the style calls for it or the user asks.
+Default to ICON images (`[icon_*]` tokens — her convention; see SKILL rule 7). Use plain text links only for luxe/minimal styles or when she asks.

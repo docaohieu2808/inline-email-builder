@@ -4,6 +4,12 @@ The skill is a **layout assembler**: combine the parts below into a different la
 an app where one click changes the layout). **Text = `[title]` + `[content]` tokens (never written).
 Images = `[image_N]` tokens.** Concrete block HTML lives in `templates/blocks/`.
 
+## 0. Card shell (her convention)
+- Card `max-width: 600–640px`, centred. Font **`Arial, Helvetica, sans-serif`**.
+- **box-shadow** `0 0 6px #cccccc` (subtle depth — Outlook ignores it, fine).
+- **Card background = a layout dial:** a solid **colour**, plain **white/none**, or a **`[bg_image]`**
+  (always with a `background-color` fallback — see email-html-rules). Vary it per email.
+
 ## 1. Logo position (header)
 - **Left** — logo left, optional "view online" link right (2-col header).
 - **Centred** — logo centred, optional tagline under it; or on a coloured brand band.
@@ -27,10 +33,13 @@ sized to FIT with slack; equal image sizes; the two column `<div>`s adjacent). S
 
 (Compose new ones freely — 3-across, image+text row, etc. — same fluid technique.)
 
-## 4. Footer (always — chrome, NOT copy)
-Social links (`[facebook] [instagram] [youtube]` — text row / icon row / "Theo dõi:" label) +
-**`[contact]`** + **`[unsubscribe]`** + a "view in browser" (`[domain]`). Style per the look; the
-content here is fixed boilerplate, not marketing copy.
+## 4. Footer (always — chrome, NOT copy) — her convention
+- **Social = ICON row by default** — a "Theo dõi chúng tôi" label + `<a href='[facebook]'><img
+  src='[icon_facebook]'></a>` (icon src = `[icon_*]` token = her self-hosted PNG set; link href =
+  `[facebook]` token). Text links only if the style asks.
+- **`[contact]`** · **`Copyright © [name]`** · **`[unsubscribe]`** ("Hủy đăng ký") · view-in-browser
+  (`[domain]`, "Xem trên trình duyệt").
+- Footer usually sits **below the card** (outside the shell), like her `code.txt`.
 
 ## Assembling
 `logo(position) → [banner?] → [title] → [content] → image-block → footer` — but the **order is yours

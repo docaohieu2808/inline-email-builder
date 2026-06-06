@@ -17,7 +17,7 @@ tokens. Keep it restrained — 2–3 colors. Verify contrast ≥ 4.5:1 for text.
 If the brand provides colors, use those; the table is only a fallback.
 
 ## Fonts (web-safe stacks — no web fonts, they need `<style>`)
-- Clean/modern: `"Helvetica Neue", Helvetica, Arial, sans-serif`
+- Default (her pipeline): `Arial, Helvetica, sans-serif` · Clean/modern: `"Helvetica Neue", Helvetica, Arial`
 - Extra-safe Vietnamese / friendly: `Tahoma, Verdana, sans-serif`
 - Editorial/luxe feel: stay sans but lean on **letter-spacing + weight + whitespace** (a serif is NOT
   worth it for Vietnamese — see below).

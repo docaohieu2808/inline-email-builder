@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.18.1"
+  version: "0.18.2"
 ---
 
 # Inline Email Builder
@@ -69,8 +69,10 @@ mobile-friendly. Example brief:
    the user's — see "Logo, images, links" below.
 5. **Every `<img>` has meaningful `alt`.** Single-quote attributes (matches existing pipeline).
 6. **Keep merge tokens in `[...]` form** for fields the backend fills (see `references/tokens.md`).
-7. **Always end with a footer** — `[contact]` + an `[unsubscribe]` link + a "view in browser" link.
-   Marketing email legally requires unsubscribe; never omit it.
+7. **Always end with a footer** — `[contact]` + `Copyright © [name]` + an `[unsubscribe]` link + a
+   "view in browser" link. **Social = icon images (`[icon_*]` tokens) by default** (her convention —
+   a "Theo dõi chúng tôi" label + an icon row; text links only if the style asks). Marketing email
+   legally requires unsubscribe; never omit it.
 8. **Vietnamese-safe typography (CRITICAL).**
    (a) Copy uses full diacritics (`Cảm ơn`, `Giảm 20%`) — NEVER tiếng Việt không dấu — and in **NFC
    (precomposed)** form, never decomposed/NFD (else accents render detached: `mềm` → base + a
@@ -79,11 +81,10 @@ mobile-friendly. Example brief:
    stacked-diacritic chars (`ộ ệ ề ự ễ`): the `o`/`e` shrinks to fit the two stacked marks inside the
    thick glyph (very visible at heading sizes). Use `font-weight:bold` (700), never `800`/`900`.
    (c) Heading `line-height ≥ 1.3` (room for the double diacritics).
-   (d) Web-safe **SANS** stack set inline on every text element: `"Helvetica Neue", Helvetica, Arial,
-   sans-serif` (or `Tahoma` — best Vietnamese). **NEVER `Georgia` / `Times New Roman` (serif) for
-   Vietnamese** — they lack/mis-render the stacked-diacritic glyphs (`ề ộ ậ ữ`) on Windows, so the
-   tone mark detaches (`mềm` → "Mề f m"). For a luxe/editorial feel, get it from layout + spacing +
-   weight, NOT a serif. (Serif is fine only for English-only copy.)
+   (d) Web-safe **SANS** stack on every text element — default **`Arial, Helvetica, sans-serif`** (her
+   pipeline; or `Tahoma`). **NEVER `Georgia` / `Times New Roman` (serif) for Vietnamese** — they
+   mis-render the stacked-diacritic glyphs (`ề ộ ậ ữ`) on Windows (`mềm` → "Mề f m"); a luxe feel
+   comes from layout + spacing + weight, NOT a serif. (Serif OK only for English-only copy.)
 
 ## Token convention (compatible with existing pipeline)
 
