@@ -6,6 +6,12 @@ code-correctness. **The skill DESIGNS the components; the TEXT inside is always 
 the words. Apply on top of the chosen layout (`layout-patterns.md`) + palette (`theming-guide.md`).
 Conventions, not a fixed look — adapt to the Style. **Never ship bare flat boxes — design it.**
 
+> **DEFAULT structure = her `code.txt`: logo + `[title]` + `[content]` + icon-social + footer**
+> (`[contact]` + `Copyright © [name]` + unsubscribe/view). The components below (framed image cards,
+> offer/coupon box, badge, banner, tick list, CTA…) are a **toolkit — used ONLY when the brief/content
+> calls for them, never auto-injected.** A plain email is just title + content + social + footer,
+> nicely styled. The rules here say HOW to design a component *when you use one* — not to add them all.
+
 ## 1. Visual design rules (what the eye sees)
 - **Card shell** — white / colour / `[bg_image]`; `border-radius:12–16px`; soft `box-shadow`; Arial.
 - **Frame every image** — an image sits in a CARD: `border:1px solid #eee` + `padding:8–10px` (white

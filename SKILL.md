@@ -4,7 +4,7 @@ description: Build email HTML templates as inline-CSS fragments (no <style>/<hea
 license: MIT
 metadata:
   author: hieudc
-  version: "0.19.1"
+  version: "0.19.2"
 ---
 
 # Inline Email Builder
@@ -27,14 +27,15 @@ correct email code**. She fills the client-specific bits (logo, links, images) h
 editor — that's trivial for her, and it keeps client data OFF the agent.
 
 - **Reply in Vietnamese**, concise.
-- **Your job = the DESIGN, NOT the words.** Assemble a varied layout (logo position · `[banner]` ·
-  image block · footer) AND **design the components** per the **Email Template Design Guidelines**
-  (`references/design-guidelines.md`): **frame every image** (card = border + mat + shadow + caption —
-  NEVER a bare `<img>`), offer / coupon boxes, tick lists, badges, dividers, gradients/rounded.
-  **All TEXT is a TOKEN** (`[title] [content] [offer] [coupon] [benefit_N] [image_N_caption]…`) — you
-  design the boxes, you NEVER write the words. **Never ship bare flat boxes — design it.**
-  **No auto CTA button** — her `code.txt` style has none; the offer/coupon is the focal action. Add a
-  button only if she explicitly asks.
+- **Your job = the DESIGN, NOT the words.** **DEFAULT structure = her `code.txt`:** logo + `[title]`
+  + `[content]` + **icon-social** + footer (`[contact]` + `Copyright © [name]` + unsubscribe/view).
+  Style it well (clean card + `box-shadow`, accent heading, Arial) — a polished email, NOT a bare flat
+  box. **Extra components — image blocks / framed cards, offer / coupon box, badge, banner, tick list,
+  CTA — are OPTIONAL: add ONLY when the brief or content calls for them, NEVER auto-inject.** (A plain
+  email = title + content + social + footer. Don't sprinkle a coupon / CTA / image grid onto every
+  one.) When you DO use a component, design it per the **Email Template Design Guidelines**
+  (`references/design-guidelines.md`): frame images, dashed = code / solid = %, etc. **All TEXT is a
+  TOKEN** (`[title] [content] [offer] [image_N_caption]…`) — you design the boxes, never write the words.
 - **Recommend Layout + Style — don't make her choose blind.** Brand industry + colors are GIVEN
   context (never ask her to pick "by color/industry"). From this email's **occasion + campaign**,
   proactively suggest a fitting Layout + Style with a one-line reason (see
@@ -119,13 +120,13 @@ wave/curve divider image; `[bg_image]` = CSS background — always with a `backg
    time** — don't reuse the same one (see "Vary the LAYOUT each time" in `recommendations.md`).
    Build image blocks with the **fluid inline-block** technique (no `box-sizing`, columns fit with
    slack, equal sizes) — see "Multi-column" in `references/email-html-rules.md`.
-4. **Apply the Email Template Design Guidelines** (`references/design-guidelines.md`) — **DESIGN the
-   components** that fit the occasion: **frame every image** (card = border + mat + shadow + caption;
-   `templates/blocks/image-card-frame.html` — never a bare `<img>`), offer box (SOLID pastel = %, DASHED
-   = code), tick benefit list, badges, dividers, gradients/rounded corners (**no CTA button unless she
-   asks** — the offer/coupon is the focal action). **The TEXT
-   in each is a TOKEN** (`[title] [content] [offer] [cta_text] [benefit_N] [image_N_caption]…`) — you
-   design the box, you NEVER write the words. **Don't ship bare flat boxes.**
+4. **Build the DEFAULT structure** (logo + `[title]` + `[content]` + icon-social + footer), styled
+   per the **Email Template Design Guidelines** (`design-guidelines.md`) — clean card + shadow, accent
+   heading, Arial. **Add components ONLY if the brief/content calls for them** (product showcase →
+   framed image cards; promo with a code → DASHED coupon box; plain % → SOLID offer box; etc.) — do
+   NOT auto-inject a coupon / CTA / image grid onto a plain email. Any image you DO add must be a
+   **framed card** (never bare). **All component TEXT is a TOKEN** (`[title] [content] [offer]
+   [image_N_caption]…`) — design the box, never write the words.
 5. **Fill** inline styles with concrete theme colours (real hex, harmonized with the brand
    colour). Leave every image as its `[token]` unless the user explicitly provided a URL.
 6. **Validate & self-review** — run the linter (fix every ERROR), then self-review against
